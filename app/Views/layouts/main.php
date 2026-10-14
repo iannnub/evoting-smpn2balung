@@ -5,7 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= isset($title) ? e($title) . ' - ' : '' ?><?= e(config('app.name')) ?></title>
   
+  <meta name="description" content="Sistem Pemilihan Ketua dan Wakil Ketua OSIS SMPN 2 Balung Periode 2026/2027 secara online, transparan, dan real-time.">
+  
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="<?= isset($title) ? e($title) . ' - ' : '' ?><?= e(config('app.name')) ?>">
+  <meta property="og:description" content="Sistem Pemilihan Ketua dan Wakil Ketua OSIS SMPN 2 Balung Periode 2026/2027 secara online, transparan, dan real-time. Berikan suaramu sekarang!">
+  <meta property="og:image" content="<?= asset('img/og-image.png') ?>">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<?= isset($title) ? e($title) . ' - ' : '' ?><?= e(config('app.name')) ?>">
+  <meta name="twitter:description" content="Sistem Pemilihan Ketua dan Wakil Ketua OSIS SMPN 2 Balung Periode 2026/2027 secara online, transparan, dan real-time.">
+  <meta name="twitter:image" content="<?= asset('img/og-image.png') ?>">
+
   <link rel="icon" type="image/png" href="<?= asset('img/logo.png') ?>">
+  <link rel="apple-touch-icon" href="<?= asset('img/apple-touch-icon.png') ?>">
 
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

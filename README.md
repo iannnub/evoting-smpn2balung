@@ -168,8 +168,25 @@ evoting-smpn2balung/
    - Tambahkan variabel lingkungan berikut:
      - `NEXT_PUBLIC_API_URL` = `https://smpn2balung-evote.infinityfreeapp.com/api`
      - `NEXT_PUBLIC_BASE_URL` = `https://smpn2balung-evote.infinityfreeapp.com`
+     - `NEXT_PUBLIC_SITE_URL` = `https://nama-domain-anda.vercel.app` *(opsional, untuk domain kustom share medsos)*
 4. **Deploy**:
    - Klik **Deploy**. Vercel akan otomatis melakukan proses build dan aplikasi siap diakses secara global!
+
+---
+
+## 📱 Optimasi SEO & Social Media Share (Open Graph)
+
+Aplikasi telah dilengkapi fitur SEO & Social Share Preview bawaan sesuai standar Google & media sosial:
+
+1. **Kartu Preview Media Sosial (WhatsApp, Facebook, Telegram, Twitter, LinkedIn)**:
+   - Gambar Open Graph resmi berukuran standar **1200 x 630 px** (`/og-image.png`) dengan logo resmi SMPN 2 Balung, judul tebal, prinsip pemilihan, dan tombol ajakan memilih.
+   - Judul & deskripsi informatif otomatis muncul saat tautan dibagikan ke grup chat atau status media sosial.
+2. **Technical SEO Lengkap**:
+   - **Sitemap Dinamis**: Terbit di `/sitemap.xml` untuk pengindeksan halaman Google.
+   - **Robots.txt**: Terbit di `/robots.txt` dengan proteksi area `/admin/`.
+   - **PWA Manifest**: File `/manifest.json` dan ikon aplikasi (`icon-192x192.png`, `icon-512x512.png`, `apple-touch-icon.png`).
+   - **Schema.org JSON-LD**: Metadata terstruktur `WebApplication` & `EducationalOrganization`.
+   - **Halaman Pengalihan (Redirect)**: Tersedia `/redirect.html` bagi panitia yang ingin membagikan link pengalihan instan lengkap dengan kartu Open Graph.
 
 ---
 
