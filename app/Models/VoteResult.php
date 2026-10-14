@@ -7,14 +7,25 @@ use PDO;
 
 class VoteResult extends Model
 {
-    protected string $table = 'vote_results';
+    protected string $table = 'candidates';
 
     public function getByPeriod(int|string $periodId): array
     {
         $stmt = $this->db->prepare("
-            SELECT * FROM {$this->table}
-            WHERE period_id = ?
-            ORDER BY total_votes DESC, order_number ASC
+            SELECT 
+                c.id AS candidate_id,
+                c.full_name AS candidate_name,
+                c.class AS candidate_class,
+                c.photo_filename AS photo_filename,
+                c.order_number AS order_number,
+                c.period_id AS period_id,
+                COUNT(v.id) AS total_votes,
+                ROUND(IFNULL(COUNT(v.id) * 100.0 / NULLIF((SELECT COUNT(*) FROM votes WHERE period_id = c.period_id), 0), 0), 1) AS vote_percentage
+            FROM candidates c
+            LEFT JOIN votes v ON c.id = v.candidate_id
+            WHERE c.period_id = ?
+            GROUP BY c.id, c.full_name, c.class, c.photo_filename, c.order_number, c.period_id
+            ORDER BY total_votes DESC, c.order_number ASC
         ");
         $stmt->execute([$periodId]);
         return $stmt->fetchAll();
