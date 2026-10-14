@@ -1,0 +1,61 @@
+# ========================================================
+# Git Ignore: E-Voting OSIS SMPN 2 BALUNG
+# ========================================================
+
+# Environment Variables
+.env
+.env.local
+*.local
+cookies.txt
+
+# Node / Frontend Build
+node_modules/
+*/node_modules/
+.next/
+*/.next/
+out/
+*/out/
+.turbo/
+*/.turbo/
+next-env.d.ts
+
+# Storage & Temporary Files
+storage/cache/*
+!storage/cache/.gitkeep
+storage/logs/*
+!storage/logs/.gitkeep
+storage/imports/*
+!storage/imports/.gitkeep
+storage/tests/
+
+# Exclude all Markdown files except README.md
+*.md
+!README.md
+*/*.md
+!*/README.md
+*/*/*.md
+!*/*/*.md
+
+# Spreadsheets, Documents & Test Files
+*.xlsx
+*.xls
+*.csv
+*.docx
+*.doc
+test_*.php
+test_*.xlsx
+test_*.csv
+logo speduba.png
+
+# Unnecessary / Internal Folders
+anti-slop-main/
+/anti-slop-main/
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
