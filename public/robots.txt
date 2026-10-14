@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://evoting-smpn2balung.vercel.app/sitemap.xml

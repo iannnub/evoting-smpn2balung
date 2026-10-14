@@ -1,0 +1,32 @@
+{
+  "name": "E-Voting OSIS SMPN 2 Balung",
+  "short_name": "OSIS Voting",
+  "description": "Sistem pemilihan Ketua dan Wakil Ketua OSIS SMPN 2 Balung secara online, transparan, dan real-time.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ec4899",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["education", "government"],
+  "lang": "id",
+  "dir": "ltr"
+}

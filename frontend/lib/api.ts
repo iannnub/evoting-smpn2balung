@@ -1,4 +1,18 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost/osis/api";
+export function getApiBase(): string {
+  if (typeof window !== "undefined") {
+    // If running on localhost
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      return window.location.pathname.startsWith("/osis") ? "/osis/api" : "/api";
+    }
+    // If deployed on Vercel
+    if (window.location.hostname.endsWith("vercel.app")) {
+      return process.env.NEXT_PUBLIC_API_URL || "https://evoting-smpn2balung.infinityfreeapp.com/api";
+    }
+    // Default same-origin relative path /api
+    return "/api";
+  }
+  return process.env.NEXT_PUBLIC_API_URL || "/api";
+}
 
 export interface Period {
   id: number;
@@ -76,7 +90,8 @@ async function apiFetch<T>(endpoint: string, options: RequestInit = {}): Promise
       defaultHeaders["Content-Type"] = "application/json";
     }
 
-    const res = await fetch(`${API_BASE}${endpoint}`, {
+    const apiBase = getApiBase();
+    const res = await fetch(`${apiBase}${endpoint}`, {
       ...options,
       headers: {
         ...defaultHeaders,
@@ -84,7 +99,19 @@ async function apiFetch<T>(endpoint: string, options: RequestInit = {}): Promise
       },
       credentials: "include", // For session cookie sharing
     });
-    const json = await res.json();
+
+    const text = await res.text();
+    let json: any;
+    try {
+      json = JSON.parse(text);
+    } catch {
+      return {
+        success: false,
+        message: res.status === 403 || text.includes("aes.js")
+          ? "Verifikasi akses sistem sedang berjalan. Silakan muat ulang (refresh) halaman."
+          : `Gagal memproses data server (HTTP ${res.status}).`,
+      };
+    }
     return json;
   } catch (err: any) {
     return {

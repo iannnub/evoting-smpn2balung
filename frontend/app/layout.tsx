@@ -129,6 +129,16 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined' && window.location.hostname.endsWith('vercel.app')) {
+                var target = 'https://evoting-smpn2balung.infinityfreeapp.com' + window.location.pathname + window.location.search;
+                window.location.replace(target);
+              }
+            `,
+          }}
+        />
       </head>
       <body className={`${inter.className} min-h-screen flex flex-col bg-slate-50 text-gray-900 antialiased`}>
         <Navbar />

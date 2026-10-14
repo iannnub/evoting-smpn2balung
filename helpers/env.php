@@ -12,13 +12,17 @@ function load_env(string $path): void
 
     $dir = dirname($path);
 
-    // 2. Jika ada env.php, override nilai (khusus server hosting)
+    // 2. Jika ada env.php, override nilai (khusus server hosting jika .env tidak ada atau di server non-localhost)
     if (is_file($dir . '/env.php')) {
-        $data = require $dir . '/env.php';
-        if (is_array($data)) {
-            foreach ($data as $k => $v) {
-                $_ENV[$k] = (string) $v;
-                putenv("$k=" . (string) $v);
+        $serverName = $_SERVER['SERVER_NAME'] ?? $_SERVER['HTTP_HOST'] ?? '';
+        $isLocalhost = ($serverName === 'localhost' || str_starts_with($serverName, '127.0.0.1'));
+        if (!is_file($path) || !$isLocalhost) {
+            $data = require $dir . '/env.php';
+            if (is_array($data)) {
+                foreach ($data as $k => $v) {
+                    $_ENV[$k] = (string) $v;
+                    putenv("$k=" . (string) $v);
+                }
             }
         }
     }

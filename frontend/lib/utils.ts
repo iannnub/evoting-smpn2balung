@@ -18,16 +18,17 @@ export function getPhotoUrl(photoUrl?: string | null, orderNumber?: number): str
   if (photoUrl.startsWith("http://") || photoUrl.startsWith("https://")) {
     return photoUrl;
   }
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost/osis/api";
-  let origin = "http://localhost";
-  try {
-    origin = new URL(apiUrl).origin;
-  } catch (e) {}
-
-  const cleanPath = photoUrl.startsWith("/") ? photoUrl : `/${photoUrl}`;
-  if (cleanPath.startsWith("/osis/")) {
-    return `${origin}${cleanPath}`;
+  if (typeof window !== "undefined") {
+    const origin = window.location.origin;
+    const cleanPath = photoUrl.startsWith("/") ? photoUrl : `/${photoUrl}`;
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      return cleanPath.startsWith("/osis/") ? `${origin}${cleanPath}` : `${origin}/osis${cleanPath}`;
+    }
+    if (window.location.hostname.endsWith("vercel.app")) {
+      return `https://evoting-smpn2balung.infinityfreeapp.com${cleanPath.replace(/^\/osis/, "")}`;
+    }
+    return cleanPath.replace(/^\/osis/, "");
   }
-  return `${origin}/osis${cleanPath}`;
+  return photoUrl;
 }
 
