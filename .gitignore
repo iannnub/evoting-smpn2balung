@@ -56,6 +56,7 @@ anti-slop-main/
 Thumbs.db
 .idea/
 .vscode/
-*.swp
-*.swo
-*~
+# Archives
+*.zip
+*.tar.gz
+*.rar
