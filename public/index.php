@@ -1,6 +1,8 @@
 <?php
 
-define('BASE_PATH', dirname(__DIR__));
+if (!defined('BASE_PATH')) {
+    define('BASE_PATH', dirname(__DIR__));
+}
 
 // Load env
 require_once BASE_PATH . '/helpers/env.php';
