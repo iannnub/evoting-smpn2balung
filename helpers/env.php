@@ -5,15 +5,14 @@
 
 function load_env(string $path): void
 {
-    // 1. Coba baca file utama (misal .env)
+    // 1. Baca .env jika ada
     if (is_file($path)) {
         parse_env_lines($path);
-        return;
     }
 
     $dir = dirname($path);
 
-    // 2. Fallback: env.php (sangat ramah hosting yang menyembunyikan dotfiles)
+    // 2. Jika ada env.php, override nilai (khusus server hosting)
     if (is_file($dir . '/env.php')) {
         $data = require $dir . '/env.php';
         if (is_array($data)) {
@@ -21,7 +20,6 @@ function load_env(string $path): void
                 $_ENV[$k] = (string) $v;
                 putenv("$k=" . (string) $v);
             }
-            return;
         }
     }
 
