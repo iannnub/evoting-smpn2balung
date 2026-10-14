@@ -19,6 +19,7 @@ out/
 .turbo/
 */.turbo/
 next-env.d.ts
+*.tsbuildinfo
 
 # Storage & Temporary Files
 storage/cache/*
@@ -57,7 +58,8 @@ anti-slop-main/
 Thumbs.db
 .idea/
 .vscode/
-# Archives
+# Archives & Deployment bundles
 *.zip
 *.tar.gz
 *.rar
+package_infinityfree/

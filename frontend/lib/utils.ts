@@ -15,6 +15,13 @@ export function getPhotoUrl(photoUrl?: string | null, orderNumber?: number): str
     if (orderNumber === 2) return "/candidates/kandidat-2.svg";
     return "/default-avatar.svg";
   }
+  // Standard initial candidates map to guaranteed static assets
+  if (photoUrl.includes("kandidat-1.svg")) {
+    return "/candidates/kandidat-1.svg";
+  }
+  if (photoUrl.includes("kandidat-2.svg")) {
+    return "/candidates/kandidat-2.svg";
+  }
   if (photoUrl.startsWith("http://") || photoUrl.startsWith("https://")) {
     return photoUrl;
   }

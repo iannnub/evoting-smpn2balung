@@ -1,6 +1,9 @@
 Options -Indexes
 DirectoryIndex index.html index.php
 
+AddType image/svg+xml .svg .svgz
+AddType image/x-icon .ico
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f

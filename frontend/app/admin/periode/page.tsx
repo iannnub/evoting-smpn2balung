@@ -394,8 +394,8 @@ export default function AdminPeriodePage() {
 
       {/* Create Period Modal */}
       {showCreateModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
-          <div className="w-full max-w-md rounded-3xl bg-white p-6 sm:p-8 shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs overflow-y-auto">
+          <div className="w-full max-w-md rounded-3xl bg-white p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto my-8">
             <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
               <h3 className="text-lg font-black text-gray-950">Buat Periode Baru</h3>
               <button
@@ -477,8 +477,8 @@ export default function AdminPeriodePage() {
 
       {/* Reset Confirmation Modal */}
       {showResetModal && resetTargetPeriod && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 modal-box text-center shadow-2xl space-y-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs overflow-y-auto">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 modal-box text-center shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto my-8">
             <div className="w-14 h-14 mx-auto rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center">
               <AlertTriangle className="w-8 h-8" />
             </div>

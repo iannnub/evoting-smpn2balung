@@ -149,6 +149,7 @@ export default function AdminSiswaPage() {
 
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, selectedCategory, selectedClass, selectedStatus]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -608,8 +609,8 @@ export default function AdminSiswaPage() {
 
       {/* Import DPT Modal */}
       {showImportModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 modal-box shadow-2xl space-y-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs overflow-y-auto">
+          <div className="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 modal-box shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto my-8">
             <div className="flex items-center justify-between pb-4 border-b border-gray-100">
               <div className="flex items-center gap-2.5">
                 <div className="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center">

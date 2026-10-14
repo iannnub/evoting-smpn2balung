@@ -266,7 +266,7 @@ export default function AdminKandidatPage() {
       {/* Add / Edit Candidate Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs overflow-y-auto">
-          <div className="w-full max-w-lg rounded-3xl bg-white p-6 sm:p-8 shadow-2xl my-8">
+          <div className="w-full max-w-lg rounded-3xl bg-white p-6 sm:p-8 shadow-2xl my-8 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
               <h3 className="text-lg font-black text-gray-950">
                 {editingCandidate ? `Edit Paslon #${editingCandidate.order_number}` : "Tambah Paslon Baru"}

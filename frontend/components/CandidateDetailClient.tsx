@@ -117,7 +117,7 @@ export default function CandidateDetailClient({ id }: { id: string }) {
                 </h2>
               </div>
               <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 text-gray-700 leading-relaxed font-medium text-sm">
-                "{candidate.vision}"
+                &ldquo;{candidate.vision}&rdquo;
               </div>
             </div>
 

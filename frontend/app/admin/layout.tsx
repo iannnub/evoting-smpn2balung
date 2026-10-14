@@ -28,8 +28,8 @@ export default function AdminLayout({
   const [adminUser, setAdminUser] = useState<{ id: number; email: string; full_name: string } | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-
-  const isLoginPage = pathname === "/admin/login";
+  const cleanPath = (pathname || "").replace(/\/+$/, "") || "/";
+  const isLoginPage = cleanPath === "/admin/login";
 
   useEffect(() => {
     if (isLoginPage) {
@@ -52,7 +52,7 @@ export default function AdminLayout({
       }
     }
     checkAuth();
-  }, [pathname, isLoginPage, router]);
+  }, [cleanPath, isLoginPage, router]);
 
   const handleLogout = async () => {
     try {
@@ -138,7 +138,7 @@ export default function AdminLayout({
         <nav className="flex-1 px-4 py-6 space-y-1.5 overflow-y-auto">
           {navItems.map((item) => {
             const Icon = item.icon;
-            const isActive = pathname === item.href;
+            const isActive = cleanPath === item.href;
             return (
               <Link
                 key={item.href}
@@ -178,9 +178,19 @@ export default function AdminLayout({
         </div>
       </aside>
 
+      {/* Backdrop for mobile sidebar */}
+      {isMobileMenuOpen && (
+        <div
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="fixed inset-0 z-30 bg-black/60 backdrop-blur-xs md:hidden"
+        />
+      )}
+
       {/* Main Content Area */}
-      <main className="flex-1 p-4 sm:p-8 md:p-10 max-w-7xl overflow-x-hidden">
-        {children}
+      <main className="flex-1 bg-slate-100 text-slate-900 p-4 sm:p-6 md:p-8 lg:p-10 min-w-0 overflow-y-auto">
+        <div className="max-w-7xl mx-auto">
+          {children}
+        </div>
       </main>
     </div>
   );
