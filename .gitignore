@@ -5,6 +5,7 @@
 # Environment Variables
 .env
 .env.local
+env.php
 *.local
 cookies.txt
 

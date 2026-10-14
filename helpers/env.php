@@ -5,10 +5,35 @@
 
 function load_env(string $path): void
 {
-    if (!is_file($path)) {
+    // 1. Coba baca file utama (misal .env)
+    if (is_file($path)) {
+        parse_env_lines($path);
         return;
     }
-    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [];
+
+    $dir = dirname($path);
+
+    // 2. Fallback: env.php (sangat ramah hosting yang menyembunyikan dotfiles)
+    if (is_file($dir . '/env.php')) {
+        $data = require $dir . '/env.php';
+        if (is_array($data)) {
+            foreach ($data as $k => $v) {
+                $_ENV[$k] = (string) $v;
+                putenv("$k=" . (string) $v);
+            }
+            return;
+        }
+    }
+
+    // 3. Fallback: env.txt
+    if (is_file($dir . '/env.txt')) {
+        parse_env_lines($dir . '/env.txt');
+    }
+}
+
+function parse_env_lines(string $filePath): void
+{
+    $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [];
     foreach ($lines as $line) {
         $line = trim($line);
         if ($line === '' || str_starts_with($line, '#') || !str_contains($line, '=')) {

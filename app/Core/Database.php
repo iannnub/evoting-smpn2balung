@@ -32,7 +32,11 @@ class Database
                 self::$instance = new PDO($dsn, $config['user'], $config['pass'], $options);
             } catch (PDOException $e) {
                 error_log('Database connection error: ' . $e->getMessage());
-                throw new RuntimeException('Gagal terhubung ke database. Periksa konfigurasi di file .env');
+                $envStatus = file_exists(BASE_PATH . '/.env') ? '.env ADA' : '.env TIDAK DITEMUKAN di ' . BASE_PATH . '/.env';
+                throw new RuntimeException(
+                    'Gagal terhubung ke database MySQL: ' . $e->getMessage() . 
+                    ' [Status: ' . $envStatus . ', Host: ' . ($config['host'] ?? '-') . ', DB: ' . ($config['name'] ?? '-') . ', User: ' . ($config['user'] ?? '-') . ']'
+                );
             }
         }
 
