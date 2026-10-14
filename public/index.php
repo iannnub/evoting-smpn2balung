@@ -58,9 +58,11 @@ set_exception_handler(function (\Throwable $e) use ($isDev) {
     } else {
         $view500 = BASE_PATH . '/app/Views/errors/500.php';
         if (is_file($view500)) {
+            $errorMessage = $e->getMessage();
+            $errorFile = $e->getFile() . ':' . $e->getLine();
             require $view500;
         } else {
-            echo "<h1>500 - Terjadi Kesalahan Server</h1><p>Silakan coba beberapa saat lagi.</p>";
+            echo "<h1>500 - Terjadi Kesalahan Server</h1><p>" . e($e->getMessage()) . "</p>";
         }
     }
     exit;
