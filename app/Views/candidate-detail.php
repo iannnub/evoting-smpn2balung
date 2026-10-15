@@ -17,7 +17,7 @@
         <div class="relative w-full max-w-[280px] aspect-square rounded-2xl overflow-hidden bg-pink-50 shadow-md">
           <img src="<?= candidate_photo($candidate['photo_filename'], (int) $candidate['order_number']) ?>" alt="Foto <?= e($candidate['full_name']) ?>" class="w-full h-full object-cover">
           <div class="absolute top-3 left-3">
-            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full font-bold text-white gradient-pink shadow-md">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full font-bold text-white bg-pink-600 shadow-md">
               <?= $candidate['order_number'] ?: '?' ?>
             </span>
           </div>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="mt-6 w-full">
-          <a href="<?= url('vote') ?>" class="block w-full py-3.5 px-4 rounded-xl text-center text-white font-bold gradient-pink shadow-md hover:brightness-105 active:scale-98 transition-all">
+          <a href="<?= url('vote') ?>" class="block w-full py-3.5 px-4 rounded-xl text-center text-white font-bold bg-pink-600 hover:bg-pink-700 shadow-sm transition-colors">
             PILIH KANDIDAT INI
           </a>
         </div>

@@ -98,7 +98,7 @@
             
             <!-- Order Number Badge -->
             <div class="absolute top-4 left-4">
-              <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl font-black text-xl text-white gradient-pink shadow-md">
+              <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl font-black text-xl text-white bg-pink-600 shadow-md">
                 <?= $c['order_number'] ?: '?' ?>
               </span>
             </div>
@@ -136,7 +136,7 @@
               <a href="<?= url('kandidat/' . $c['id']) ?>" class="flex-1 py-3 px-4 rounded-xl border border-pink-200 text-pink-600 text-center font-bold text-sm hover:bg-pink-50 transition-colors">
                 Detail Visi Misi
               </a>
-              <a href="<?= url('vote') ?>" class="py-3 px-5 rounded-xl gradient-pink text-white text-center font-bold text-sm hover:brightness-105 shadow-xs transition-all">
+              <a href="<?= url('vote') ?>" class="py-3 px-5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-center font-bold text-sm shadow-xs transition-colors">
                 Pilih
               </a>
             </div>
@@ -211,7 +211,7 @@
 
 <!-- Mobile Sticky Bottom CTA -->
 <div class="md:hidden fixed bottom-0 inset-x-0 p-3 bg-white/95 backdrop-blur-md border-t border-gray-200 z-20 shadow-lg">
-  <a href="<?= url('vote') ?>" class="block w-full py-3.5 rounded-full text-center text-white font-bold gradient-pink shadow-md text-base">
+  <a href="<?= url('vote') ?>" class="block w-full py-3.5 rounded-full text-center text-white font-bold bg-pink-600 hover:bg-pink-700 shadow-sm text-base transition-colors">
     VOTE SEKARANG
   </a>
 </div>

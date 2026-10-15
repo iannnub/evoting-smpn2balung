@@ -9,7 +9,7 @@
       </div>
       <h2 class="text-xl font-bold text-gray-900 mb-2">Tidak Ada Periode Aktif</h2>
       <p class="text-gray-500 text-sm mb-6">Hasil belum dapat ditampilkan karena tidak ada pemilihan yang sedang aktif.</p>
-      <a href="<?= url() ?>" class="px-6 py-2.5 rounded-full gradient-pink text-white font-semibold text-sm">Kembali ke Beranda</a>
+      <a href="<?= url() ?>" class="px-6 py-2.5 rounded-full bg-pink-600 hover:bg-pink-700 text-white font-semibold text-sm transition-colors">Kembali ke Beranda</a>
     </div>
   <?php elseif (empty($period['is_results_visible'])): ?>
     <div class="bg-white rounded-3xl p-12 text-center border border-gray-100 shadow-sm max-w-lg mx-auto">
@@ -25,7 +25,7 @@
       <p class="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
         Panitia pemilihan telah mengunci perolehan suara sementara. Hasil akhir akan ditampilkan secara resmi setelah masa pemungutan suara ditutup.
       </p>
-      <a href="<?= url() ?>" class="inline-flex items-center justify-center px-6 py-3 rounded-full gradient-pink text-white font-semibold text-sm shadow-md">
+      <a href="<?= url() ?>" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-pink-600 hover:bg-pink-700 text-white font-semibold text-sm shadow-sm transition-colors">
         Kembali ke Beranda
       </a>
     </div>
@@ -165,7 +165,7 @@
                       <span id="rank-pct-<?= $r['candidate_id'] ?>"><?= $r['vote_percentage'] ?>%</span>
                     </div>
                     <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
-                      <div id="rank-bar-<?= $r['candidate_id'] ?>" class="gradient-pink h-3 rounded-full transition-all duration-700" style="width: <?= $r['vote_percentage'] ?>%"></div>
+                      <div id="rank-bar-<?= $r['candidate_id'] ?>" class="bg-pink-600 h-3 rounded-full transition-all duration-700" style="width: <?= $r['vote_percentage'] ?>%"></div>
                     </div>
                   </div>
                 </td>

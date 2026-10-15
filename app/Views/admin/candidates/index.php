@@ -7,7 +7,7 @@
     </div>
     
     <div class="flex items-center gap-3">
-      <a href="<?= url('admin/kandidat/tambah') ?>" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl gradient-pink text-white font-bold text-sm shadow-md hover:brightness-105 transition-all">
+      <a href="<?= url('admin/kandidat/tambah') ?>" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-sm shadow-sm transition-colors">
         + Tambah Kandidat
       </a>
     </div>
@@ -40,7 +40,7 @@
         </div>
         <h3 class="font-bold text-gray-800 text-base mb-1">Belum Ada Kandidat</h3>
         <p class="text-xs text-gray-400 mb-4">Mulai dengan menambahkan kandidat pertama untuk periode ini.</p>
-        <a href="<?= url('admin/kandidat/tambah') ?>" class="inline-flex px-4 py-2 rounded-xl gradient-pink text-white font-bold text-xs shadow-sm">+ Tambah Kandidat Sekarang</a>
+        <a href="<?= url('admin/kandidat/tambah') ?>" class="inline-flex px-4 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs shadow-sm transition-colors">+ Tambah Kandidat Sekarang</a>
       </div>
     <?php else: ?>
       <div class="overflow-x-auto">
@@ -59,7 +59,7 @@
             <?php foreach ($candidates as $c): ?>
               <tr class="hover:bg-pink-50/20 transition-colors">
                 <td class="py-4 px-6 text-center">
-                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full font-extrabold text-sm gradient-pink text-white shadow-xs">
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full font-extrabold text-sm bg-pink-600 text-white shadow-xs">
                     <?= $c['order_number'] ?>
                   </span>
                 </td>

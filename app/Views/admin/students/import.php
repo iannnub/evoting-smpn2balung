@@ -69,7 +69,7 @@
         <a href="<?= url('admin/siswa') ?>" class="px-5 py-2.5 rounded-xl border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition-colors">
           Batal
         </a>
-        <button type="submit" id="submit-btn" class="px-6 py-2.5 rounded-xl gradient-pink text-white font-bold text-sm shadow-md hover:brightness-105 transition-all flex items-center gap-2">
+        <button type="submit" id="submit-btn" class="px-6 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-sm shadow-sm transition-colors flex items-center gap-2">
           <span>Unggah & Pratinjau Data</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </button>

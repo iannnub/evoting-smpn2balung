@@ -80,7 +80,7 @@
         <a href="<?= url('admin/kandidat') ?>" class="px-5 py-2.5 rounded-xl border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition-colors">
           Batal
         </a>
-        <button type="submit" class="px-6 py-2.5 rounded-xl gradient-pink text-white font-bold text-sm shadow-md hover:brightness-105 transition-all">
+        <button type="submit" class="px-6 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-sm shadow-sm transition-colors">
           <?= $isEdit ? 'Simpan Perubahan' : 'Simpan Kandidat' ?>
         </button>
       </div>

@@ -92,6 +92,9 @@ function is_api_request(): bool
 function current_path_is(string $prefix): bool
 {
     $path = request_path();
+    if ($prefix === '/' || $prefix === '') {
+        return $path === '/' || $path === '';
+    }
     return $path === $prefix || str_starts_with($path, rtrim($prefix, '/') . '/');
 }
 

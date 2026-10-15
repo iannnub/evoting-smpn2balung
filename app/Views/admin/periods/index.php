@@ -6,7 +6,7 @@
       <p class="text-xs sm:text-sm text-gray-500">Buat, aktifkan, atau arsipkan periode pemilihan OSIS setiap tahunnya.</p>
     </div>
     <div class="flex items-center gap-3">
-      <a href="<?= url('admin/periode/tambah') ?>" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl gradient-pink text-white font-bold text-sm shadow-md hover:brightness-105 transition-all">
+      <a href="<?= url('admin/periode/tambah') ?>" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-sm shadow-sm transition-colors">
         + Buat Periode Baru
       </a>
     </div>

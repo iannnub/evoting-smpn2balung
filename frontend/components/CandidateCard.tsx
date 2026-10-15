@@ -35,7 +35,7 @@ export default function CandidateCard({
       }`}
     >
       {/* Top Banner / Image Area - Explicit height for reliable display */}
-      <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-gradient-to-b from-slate-50 to-pink-50/40 border-b border-gray-100 flex items-center justify-center">
+      <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-50 border-b border-gray-100 flex items-center justify-center">
         <Image
           src={photoSrc}
           alt={`Foto calon nomor ${candidate.order_number} ${candidate.full_name}`}

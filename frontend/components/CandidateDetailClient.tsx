@@ -72,7 +72,7 @@ export default function CandidateDetailClient({ id }: { id: string }) {
 
       <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
-          <div className="md:col-span-5 bg-gradient-to-b from-slate-50 to-pink-50/50 p-8 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-gray-100">
+          <div className="md:col-span-5 bg-slate-50 p-8 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-gray-100">
             <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-3xl overflow-hidden shadow-lg border-4 border-white mb-6">
               <Image
                 src={photo}

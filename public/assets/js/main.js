@@ -4,9 +4,44 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile nav toggle
   const mobileBtn = document.getElementById('btn-mobile-menu');
   const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-menu-open');
+  const iconClose = document.getElementById('icon-menu-close');
+
   if (mobileBtn && mobileMenu) {
-    mobileBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+    const setMenuOpen = (open) => {
+      mobileMenu.classList.toggle('hidden', !open);
+      mobileBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (iconOpen && iconClose) {
+        iconOpen.classList.toggle('hidden', open);
+        iconClose.classList.toggle('hidden', !open);
+      }
+    };
+
+    mobileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      setMenuOpen(!isOpen);
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+        setMenuOpen(false);
+      }
+    });
+
+    // Auto-close when clicking any link inside mobile menu
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        setMenuOpen(false);
+      });
     });
   }
 
@@ -15,12 +50,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const sidebar = document.getElementById('admin-sidebar');
   const overlay = document.getElementById('sidebar-overlay');
   if (sidebarBtn && sidebar) {
-    const toggle = () => {
-      sidebar.classList.toggle('-translate-x-full');
-      if (overlay) overlay.classList.toggle('hidden');
+    const setSidebarOpen = (open) => {
+      sidebar.classList.toggle('-translate-x-full', !open);
+      if (overlay) overlay.classList.toggle('hidden', !open);
+      sidebarBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     };
-    sidebarBtn.addEventListener('click', toggle);
-    if (overlay) overlay.addEventListener('click', toggle);
+
+    sidebarBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !sidebar.classList.contains('-translate-x-full');
+      setSidebarOpen(!isOpen);
+    });
+
+    if (overlay) {
+      overlay.addEventListener('click', () => setSidebarOpen(false));
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full')) {
+        setSidebarOpen(false);
+      }
+    });
   }
 
   // Auto-hide alert toasts after 5 seconds

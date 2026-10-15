@@ -9,7 +9,7 @@
       </div>
       <h2 class="text-xl font-bold text-gray-900 mb-2">Tidak Ada Periode Aktif</h2>
       <p class="text-gray-500 text-sm mb-6">Pemilihan belum dimulai atau sedang ditutup oleh pihak sekolah.</p>
-      <a href="<?= url() ?>" class="px-6 py-2.5 rounded-full gradient-pink text-white font-semibold text-sm">Kembali ke Beranda</a>
+      <a href="<?= url() ?>" class="px-6 py-2.5 rounded-full bg-pink-600 hover:bg-pink-700 text-white font-semibold text-sm transition-colors">Kembali ke Beranda</a>
     </div>
   <?php elseif (empty($period['is_voting_open'])): ?>
     <div class="bg-white rounded-3xl p-10 text-center border border-gray-100 shadow-sm">
@@ -20,7 +20,7 @@
       </div>
       <h2 class="text-xl font-bold text-gray-900 mb-2">Bilik Suara Ditutup Sementara</h2>
       <p class="text-gray-500 text-sm mb-6">Panitia pemilihan sedang menghentikan proses pemungutan suara sementara waktu.</p>
-      <a href="<?= url() ?>" class="px-6 py-2.5 rounded-full gradient-pink text-white font-semibold text-sm">Kembali ke Beranda</a>
+      <a href="<?= url() ?>" class="px-6 py-2.5 rounded-full bg-pink-600 hover:bg-pink-700 text-white font-semibold text-sm transition-colors">Kembali ke Beranda</a>
     </div>
   <?php elseif (count($candidates) < 2): ?>
     <div class="bg-white rounded-3xl p-10 text-center border border-gray-100 shadow-sm">
@@ -31,7 +31,7 @@
       </div>
       <h2 class="text-xl font-bold text-gray-900 mb-2">Kandidat Belum Memenuhi Syarat</h2>
       <p class="text-gray-500 text-sm mb-6">Dibutuhkan minimal 2 kandidat terdaftar untuk membuka bilik suara digital.</p>
-      <a href="<?= url() ?>" class="px-6 py-2.5 rounded-full gradient-pink text-white font-semibold text-sm">Kembali ke Beranda</a>
+      <a href="<?= url() ?>" class="px-6 py-2.5 rounded-full bg-pink-600 hover:bg-pink-700 text-white font-semibold text-sm transition-colors">Kembali ke Beranda</a>
     </div>
   <?php else: ?>
 
@@ -122,7 +122,7 @@
 
         <!-- Next button -->
         <div class="pt-4 flex justify-end">
-          <button type="button" id="btn-step1-next" disabled class="px-8 py-3.5 rounded-full text-white font-bold text-sm gradient-pink shadow-md opacity-50 cursor-not-allowed transition-all">
+          <button type="button" id="btn-step1-next" disabled class="px-8 py-3.5 rounded-full text-white font-bold text-sm bg-pink-600 hover:bg-pink-700 shadow-sm opacity-50 cursor-not-allowed transition-all">
             Lanjut Pilih Kandidat →
           </button>
         </div>
@@ -167,7 +167,7 @@
           <button type="button" id="btn-step2-back" class="px-6 py-2.5 rounded-full border border-gray-200 text-gray-600 text-sm font-semibold hover:bg-gray-50 transition-colors">
             ← Kembali
           </button>
-          <button type="button" id="btn-step2-next" disabled class="px-8 py-3.5 rounded-full text-white font-bold text-sm gradient-pink shadow-md opacity-50 cursor-not-allowed transition-all">
+          <button type="button" id="btn-step2-next" disabled class="px-8 py-3.5 rounded-full text-white font-bold text-sm bg-pink-600 hover:bg-pink-700 shadow-sm opacity-50 cursor-not-allowed transition-all">
             Lanjut ke Konfirmasi →
           </button>
         </div>
@@ -194,7 +194,7 @@
         </div>
 
         <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a href="<?= url('hasil') ?>" class="w-full sm:w-auto px-8 py-3.5 rounded-full gradient-pink text-white font-bold text-sm shadow-md hover:brightness-105 transition-all">
+          <a href="<?= url('hasil') ?>" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-pink-600 hover:bg-pink-700 text-white font-bold text-sm shadow-sm transition-colors">
             Lihat Hasil Sementara →
           </a>
           <a href="<?= url() ?>" class="w-full sm:w-auto px-6 py-3.5 rounded-full border border-gray-200 text-gray-600 font-semibold text-sm hover:bg-gray-50 transition-colors">
@@ -236,7 +236,7 @@
           <button type="button" id="btn-modal-cancel" class="flex-1 py-3 rounded-xl border border-gray-200 text-gray-700 font-semibold text-sm hover:bg-gray-50 transition-colors">
             Batal
           </button>
-          <button type="button" id="btn-modal-submit" class="flex-1 py-3 rounded-xl gradient-pink text-white font-bold text-sm shadow-md hover:brightness-105 transition-all">
+          <button type="button" id="btn-modal-submit" class="flex-1 py-3 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-sm shadow-sm transition-colors">
             Ya, Simpan Pilihan Saya
           </button>
         </div>

@@ -13,14 +13,17 @@
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold" aria-label="Navigasi Utama">
-        <a href="<?= url() ?>" class="px-3.5 py-2 rounded-xl transition-all <?= current_path_is('/') ? 'text-pink-600 bg-pink-50/80 font-bold' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50' ?>">
+      <nav class="hidden md:flex items-center gap-2 text-sm font-semibold" aria-label="Navigasi Utama">
+        <a href="<?= url() ?>" class="px-3.5 py-2 rounded-xl transition-all <?= current_path_is('/') ? 'text-pink-600 bg-pink-50 font-bold' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50' ?>">
           Beranda
         </a>
-        <a href="<?= url('hasil') ?>" class="px-3.5 py-2 rounded-xl transition-all <?= current_path_is('/hasil') ? 'text-pink-600 bg-pink-50/80 font-bold' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50' ?>">
-          Hasil Sementara
+        <a href="<?= url('vote') ?>" class="px-3.5 py-2 rounded-xl transition-all <?= current_path_is('/vote') ? 'text-pink-600 bg-pink-50 font-bold' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50' ?>">
+          Bilik Suara
         </a>
-        <a href="<?= url('vote') ?>" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-white font-bold text-sm gradient-pink shadow-md hover:shadow-lg hover:brightness-105 transition-all">
+        <a href="<?= url('hasil') ?>" class="px-3.5 py-2 rounded-xl transition-all <?= current_path_is('/hasil') ? 'text-pink-600 bg-pink-50 font-bold' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50' ?>">
+          Hasil Suara
+        </a>
+        <a href="<?= url('vote') ?>" class="ml-2 inline-flex items-center justify-center gap-2 px-5 py-2 rounded-xl text-white font-bold text-xs sm:text-sm bg-pink-600 hover:bg-pink-700 shadow-sm transition-colors">
           <span>Mulai Vote</span>
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -30,9 +33,12 @@
 
       <!-- Mobile Menu Button -->
       <div class="flex md:hidden">
-        <button id="btn-mobile-menu" type="button" class="p-2.5 rounded-xl text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Menu Navigasi" aria-expanded="false">
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <button id="btn-mobile-menu" type="button" class="p-2.5 rounded-xl text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors" aria-label="Menu Navigasi" aria-expanded="false" aria-controls="mobile-menu">
+          <svg id="icon-menu-open" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="icon-menu-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
@@ -41,11 +47,12 @@
   </div>
 
   <!-- Mobile Dropdown -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 pt-3 pb-5 space-y-2">
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 pt-3 pb-5 space-y-2 shadow-lg">
     <a href="<?= url() ?>" class="block px-3.5 py-2.5 rounded-xl text-sm font-semibold <?= current_path_is('/') ? 'bg-pink-50 text-pink-600 font-bold' : 'text-gray-700 hover:bg-gray-50' ?>">Beranda</a>
-    <a href="<?= url('hasil') ?>" class="block px-3.5 py-2.5 rounded-xl text-sm font-semibold <?= current_path_is('/hasil') ? 'bg-pink-50 text-pink-600 font-bold' : 'text-gray-700 hover:bg-gray-50' ?>">Hasil Sementara</a>
+    <a href="<?= url('vote') ?>" class="block px-3.5 py-2.5 rounded-xl text-sm font-semibold <?= current_path_is('/vote') ? 'bg-pink-50 text-pink-600 font-bold' : 'text-gray-700 hover:bg-gray-50' ?>">Bilik Suara</a>
+    <a href="<?= url('hasil') ?>" class="block px-3.5 py-2.5 rounded-xl text-sm font-semibold <?= current_path_is('/hasil') ? 'bg-pink-50 text-pink-600 font-bold' : 'text-gray-700 hover:bg-gray-50' ?>">Hasil Suara</a>
     <div class="pt-2">
-      <a href="<?= url('vote') ?>" class="block w-full text-center py-3 rounded-full text-white font-bold text-sm gradient-pink shadow-md">
+      <a href="<?= url('vote') ?>" class="block w-full text-center py-3 rounded-xl text-white font-bold text-sm bg-pink-600 hover:bg-pink-700 shadow-sm transition-colors">
         Mulai Vote
       </a>
     </div>

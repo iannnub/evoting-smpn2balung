@@ -61,7 +61,7 @@
         <a href="<?= url('admin/import') ?>" class="px-4 py-2.5 rounded-xl border border-gray-200 text-gray-700 text-xs font-semibold hover:bg-gray-50 transition-colors">
           Batal
         </a>
-        <button type="submit" <?= $validCount === 0 ? 'disabled' : '' ?> class="px-5 py-2.5 rounded-xl gradient-pink text-white font-bold text-xs shadow-md hover:brightness-105 transition-all disabled:opacity-50 flex items-center gap-2">
+        <button type="submit" <?= $validCount === 0 ? 'disabled' : '' ?> class="px-5 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs shadow-sm transition-colors disabled:opacity-50 flex items-center gap-2">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
           <span>Konfirmasi & Simpan (<?= number_format($validCount, 0, ',', '.') ?> Siswa)</span>
         </button>

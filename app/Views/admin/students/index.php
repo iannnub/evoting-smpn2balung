@@ -16,7 +16,7 @@
         Ekspor Excel (.xlsx)
       </a>
 
-      <a href="<?= url('admin/import') ?>" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl gradient-pink text-white text-xs font-bold shadow-xs hover:brightness-105 transition-all">
+      <a href="<?= url('admin/import') ?>" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold shadow-xs transition-colors">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
         Import Excel / CSV
       </a>
@@ -314,7 +314,7 @@
         <button type="button" onclick="document.getElementById('modal-add-student').classList.add('hidden')" class="px-4 py-2 rounded-xl border border-gray-200 text-gray-700 text-xs font-semibold hover:bg-gray-50">
           Batal
         </button>
-        <button type="submit" class="px-5 py-2 rounded-xl gradient-pink text-white font-bold text-xs shadow-xs hover:brightness-105">
+        <button type="submit" class="px-5 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs shadow-xs transition-colors">
           Simpan Siswa
         </button>
       </div>

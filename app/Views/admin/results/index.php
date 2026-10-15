@@ -85,7 +85,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <?php foreach ($results as $c): ?>
           <div class="rounded-3xl border border-gray-100 p-5 bg-white shadow-xs flex flex-col justify-between relative overflow-hidden">
-            <div class="absolute top-4 right-4 w-9 h-9 rounded-xl gradient-pink text-white font-extrabold flex items-center justify-center text-sm shadow-xs">
+            <div class="absolute top-4 right-4 w-9 h-9 rounded-xl bg-pink-600 text-white font-extrabold flex items-center justify-center text-sm shadow-xs">
               #<?= $c['order_number'] ?>
             </div>
 
@@ -109,7 +109,7 @@
                   <span class="text-base font-black text-pink-600 font-mono" id="cand-pct-<?= $c['candidate_id'] ?>"><?= $c['vote_percentage'] ?>%</span>
                 </div>
                 <div class="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
-                  <div class="h-full gradient-pink rounded-full transition-all duration-500" id="cand-bar-<?= $c['candidate_id'] ?>" style="width: <?= min(100, (float)$c['vote_percentage']) ?>%"></div>
+                  <div class="h-full bg-pink-600 rounded-full transition-all duration-500" id="cand-bar-<?= $c['candidate_id'] ?>" style="width: <?= min(100, (float)$c['vote_percentage']) ?>%"></div>
                 </div>
               </div>
             </div>

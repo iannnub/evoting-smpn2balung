@@ -33,7 +33,7 @@
         <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-pink-500 focus:outline-none focus:ring-4 focus:ring-pink-100 text-sm font-medium transition-all">
       </div>
 
-      <button type="submit" class="w-full py-3.5 rounded-xl text-white font-bold text-sm gradient-pink shadow-md hover:brightness-105 active:scale-98 transition-all">
+      <button type="submit" class="w-full py-3.5 rounded-xl text-white font-bold text-sm bg-pink-600 hover:bg-pink-700 shadow-sm transition-colors">
         Masuk ke Panel Admin
       </button>
 
