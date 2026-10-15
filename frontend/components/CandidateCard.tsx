@@ -74,13 +74,41 @@ export default function CandidateCard({
           {candidate.full_name}
         </h3>
 
-        <div className="mt-4 flex-1">
-          <p className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">
+        {/* Visi */}
+        <div className="mt-4 bg-slate-50 rounded-2xl p-4 border border-gray-100">
+          <p className="text-xs font-bold uppercase tracking-wider text-pink-600 mb-1 flex items-center gap-1.5">
             Visi
           </p>
-          <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
-            {candidate.vision}
+          <p className="text-xs sm:text-sm text-gray-700 leading-relaxed whitespace-pre-line">
+            {candidate.vision || "Visi belum diisi."}
           </p>
+        </div>
+
+        {/* Misi */}
+        <div className="mt-3 bg-slate-50 rounded-2xl p-4 border border-gray-100">
+          <p className="text-xs font-bold uppercase tracking-wider text-purple-700 mb-2 flex items-center gap-1.5">
+            Misi &amp; Program Kerja
+          </p>
+          {(() => {
+            const missions = candidate.missions && candidate.missions.length > 0 
+              ? candidate.missions 
+              : (candidate.mission ? candidate.mission.split(/\r?\n/).map(l => l.replace(/^\s*(?:[-*]|\d+[.)])\s*/, '').trim()).filter(Boolean) : []);
+            if (missions.length > 0) {
+              return (
+                <ul className="space-y-1.5">
+                  {missions.map((m, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-gray-700 leading-relaxed">
+                      <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-purple-100 text-purple-700 text-[10px] font-bold shrink-0 mt-0.5">
+                        {idx + 1}
+                      </span>
+                      <span>{m}</span>
+                    </li>
+                  ))}
+                </ul>
+              );
+            }
+            return <p className="text-xs text-gray-400 italic">Misi belum diisi.</p>;
+          })()}
         </div>
 
         {/* Action Button */}

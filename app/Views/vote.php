@@ -1,4 +1,4 @@
-<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
   <?php if (!$period): ?>
     <div class="bg-white rounded-3xl p-10 text-center border border-gray-100 shadow-sm">
@@ -135,27 +135,82 @@
           <p class="text-xs sm:text-sm text-gray-500">Pilih salah satu kandidat Ketua &amp; Wakil Ketua OSIS di bawah ini.</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
           <?php foreach ($candidates as $c): ?>
-            <div class="relative candidate-select-card" data-name="<?= e($c['full_name']) ?>" data-photo="<?= candidate_photo($c['photo_filename'], (int) $c['order_number']) ?>">
+            <div class="relative candidate-select-card h-full" data-name="<?= e($c['full_name']) ?>" data-photo="<?= candidate_photo($c['photo_filename'], (int) $c['order_number']) ?>">
               <input type="radio" name="candidate_id" id="cand-<?= $c['id'] ?>" value="<?= $c['id'] ?>" class="candidate-radio sr-only">
-              <label for="cand-<?= $c['id'] ?>" class="candidate-card-label block p-4 rounded-2xl border-2 border-gray-200 cursor-pointer transition-all hover:border-pink-300 hover:bg-pink-50/30">
-                <div class="flex items-center gap-4">
-                  <!-- Photo -->
-                  <div class="relative w-16 h-16 rounded-xl overflow-hidden bg-pink-100 shrink-0">
-                    <img src="<?= candidate_photo($c['photo_filename'], (int) $c['order_number']) ?>" alt="<?= e($c['full_name']) ?>" class="w-full h-full object-cover">
-                    <span class="absolute top-1 left-1 w-6 h-6 rounded-full bg-pink-600 text-white text-xs font-bold flex items-center justify-center">
-                      <?= $c['order_number'] ?>
-                    </span>
+              <label for="cand-<?= $c['id'] ?>" class="candidate-card-label flex flex-col justify-between h-full p-5 sm:p-6 rounded-3xl border-2 border-gray-200 bg-white cursor-pointer transition-all hover:border-pink-300 hover:shadow-lg">
+                <div>
+                  <!-- Header: Photo, Name, Order Number -->
+                  <div class="flex items-center gap-4 pb-4 border-b border-gray-100">
+                    <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-pink-100 shrink-0 border border-pink-200 shadow-xs">
+                      <img src="<?= candidate_photo($c['photo_filename'], (int) $c['order_number']) ?>" alt="<?= e($c['full_name']) ?>" class="w-full h-full object-cover">
+                      <span class="absolute top-1.5 left-1.5 w-7 h-7 rounded-xl bg-pink-600 text-white text-sm font-black flex items-center justify-center shadow-xs">
+                        <?= $c['order_number'] ?>
+                      </span>
+                    </div>
+
+                    <div class="flex-1 min-w-0">
+                      <span class="inline-block text-xs font-bold px-2.5 py-0.5 rounded-full bg-pink-50 text-pink-700 border border-pink-100 mb-1">
+                        Kelas <?= e($c['class']) ?>
+                      </span>
+                      <h3 class="font-extrabold text-gray-900 text-base sm:text-lg leading-snug break-words">
+                        <?= e($c['full_name']) ?>
+                      </h3>
+                      <span class="text-xs text-gray-400 font-medium block mt-0.5">Paslon Nomor Urut <?= $c['order_number'] ?></span>
+                    </div>
+
+                    <div class="select-indicator shrink-0 w-7 h-7 rounded-full border-2 border-gray-300 flex items-center justify-center text-transparent transition-all">
+                      <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
                   </div>
 
-                  <!-- Details -->
-                  <div class="flex-1 truncate">
-                    <span class="inline-block text-xs font-bold px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 mb-0.5">
-                      Kelas <?= e($c['class']) ?>
+                  <!-- Visi Section -->
+                  <div class="mt-4 bg-slate-50 rounded-2xl p-4 border border-gray-100">
+                    <span class="text-xs font-bold uppercase tracking-wider text-pink-600 flex items-center gap-1.5 mb-1.5">
+                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                      Visi
                     </span>
-                    <h3 class="font-bold text-gray-900 text-base truncate"><?= e($c['full_name']) ?></h3>
-                    <p class="text-xs text-gray-500 line-clamp-1 mt-0.5"><?= e(str_limit($c['vision'], 40)) ?></p>
+                    <p class="text-xs sm:text-sm text-gray-700 leading-relaxed whitespace-pre-line">
+                      <?= !empty($c['vision']) ? e($c['vision']) : '<span class="text-gray-400 italic">Visi belum diisi.</span>' ?>
+                    </p>
+                  </div>
+
+                  <!-- Misi Section -->
+                  <div class="mt-3 bg-slate-50 rounded-2xl p-4 border border-gray-100">
+                    <span class="text-xs font-bold uppercase tracking-wider text-purple-700 flex items-center gap-1.5 mb-2">
+                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                      </svg>
+                      Misi &amp; Program Kerja
+                    </span>
+                    <?php $missions = mission_items($c['mission'] ?? ''); ?>
+                    <?php if (!empty($missions)): ?>
+                      <ul class="space-y-2">
+                        <?php foreach ($missions as $idx => $m): ?>
+                          <li class="flex items-start gap-2.5 text-xs sm:text-sm text-gray-700 leading-relaxed">
+                            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-purple-100 text-purple-700 text-[10px] font-bold shrink-0 mt-0.5">
+                              <?= $idx + 1 ?>
+                            </span>
+                            <span><?= e($m) ?></span>
+                          </li>
+                        <?php endforeach; ?>
+                      </ul>
+                    <?php else: ?>
+                      <p class="text-xs text-gray-400 italic">Misi belum diisi.</p>
+                    <?php endif; ?>
+                  </div>
+                </div>
+
+                <!-- Card Footer / Select CTA -->
+                <div class="mt-5 pt-4 border-t border-gray-100">
+                  <div class="card-select-badge w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-center transition-all bg-slate-100 text-gray-700 flex items-center justify-center gap-2">
+                    <span>Pilih Paslon #<?= $c['order_number'] ?></span>
                   </div>
                 </div>
               </label>

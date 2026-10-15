@@ -263,15 +263,43 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('input[name="candidate_id"]').forEach((radio) => {
     radio.addEventListener('change', (e) => {
       document.querySelectorAll('.candidate-card-label').forEach((lbl) => {
-        lbl.classList.remove('border-pink-500', 'bg-pink-50/50', 'ring-4', 'ring-pink-100');
+        lbl.classList.remove('border-pink-600', 'bg-pink-50/40', 'ring-4', 'ring-pink-100', 'shadow-lg');
         lbl.classList.add('border-gray-200');
+
+        const indicator = lbl.querySelector('.select-indicator');
+        if (indicator) {
+          indicator.classList.remove('bg-pink-600', 'border-pink-600');
+          indicator.classList.add('border-gray-300', 'text-transparent');
+        }
+
+        const badge = lbl.querySelector('.card-select-badge');
+        if (badge) {
+          badge.classList.remove('bg-pink-600', 'text-white', 'shadow-xs');
+          badge.classList.add('bg-slate-100', 'text-gray-700');
+          const orderSpan = lbl.querySelector('.bg-pink-600');
+          const num = orderSpan ? orderSpan.textContent.trim() : '';
+          badge.innerHTML = `<span>Pilih Paslon #${num}</span>`;
+        }
       });
 
       const card = e.target.closest('.candidate-select-card');
       const label = card ? card.querySelector('.candidate-card-label') : null;
       if (label) {
         label.classList.remove('border-gray-200');
-        label.classList.add('border-pink-500', 'bg-pink-50/50', 'ring-4', 'ring-pink-100');
+        label.classList.add('border-pink-600', 'bg-pink-50/40', 'ring-4', 'ring-pink-100', 'shadow-lg');
+
+        const indicator = label.querySelector('.select-indicator');
+        if (indicator) {
+          indicator.classList.remove('border-gray-300', 'text-transparent');
+          indicator.classList.add('bg-pink-600', 'border-pink-600');
+        }
+
+        const badge = label.querySelector('.card-select-badge');
+        if (badge) {
+          badge.classList.remove('bg-slate-100', 'text-gray-700');
+          badge.classList.add('bg-pink-600', 'text-white', 'shadow-xs');
+          badge.innerHTML = `<span>✓ Paslon Terpilih</span>`;
+        }
       }
 
       selectedCandidate = {
