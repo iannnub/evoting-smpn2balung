@@ -5,22 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= isset($title) ? e($title) . ' - ' : '' ?><?= e(config('app.name')) ?></title>
   
-  <meta name="description" content="Sistem Pemilihan Ketua dan Wakil Ketua OSIS SMPN 2 Balung Periode 2026/2027 secara online, transparan, dan real-time.">
+  <meta name="description" content="Situs resmi pemilihan Ketua dan Wakil Ketua OSIS SMP Negeri 2 Balung periode 2026/2027. Salurkan hak suara Anda secara jujur, langsung, dan rahasia.">
   
   <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="E-Voting OSIS SMPN 2 Balung">
   <meta property="og:title" content="<?= isset($title) ? e($title) . ' - ' : '' ?><?= e(config('app.name')) ?>">
-  <meta property="og:description" content="Sistem Pemilihan Ketua dan Wakil Ketua OSIS SMPN 2 Balung Periode 2026/2027 secara online, transparan, dan real-time. Berikan suaramu sekarang!">
-  <meta property="og:image" content="<?= asset('img/og-image.png') ?>">
+  <meta property="og:description" content="Situs resmi pemilihan Ketua dan Wakil Ketua OSIS SMP Negeri 2 Balung periode 2026/2027. Salurkan hak suara Anda secara jujur, langsung, dan rahasia.">
+  <meta property="og:image" content="<?= asset('img/og-image.png') ?>?v=20261015">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="E-Voting OSIS SMP Negeri 2 Balung">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="<?= isset($title) ? e($title) . ' - ' : '' ?><?= e(config('app.name')) ?>">
-  <meta name="twitter:description" content="Sistem Pemilihan Ketua dan Wakil Ketua OSIS SMPN 2 Balung Periode 2026/2027 secara online, transparan, dan real-time.">
-  <meta name="twitter:image" content="<?= asset('img/og-image.png') ?>">
+  <meta name="twitter:description" content="Situs resmi pemilihan Ketua dan Wakil Ketua OSIS SMP Negeri 2 Balung periode 2026/2027.">
+  <meta name="twitter:image" content="<?= asset('img/og-image.png') ?>?v=20261015">
 
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" href="<?= asset('img/logo.png') ?>">
   <link rel="apple-touch-icon" href="<?= asset('img/apple-touch-icon.png') ?>">
 

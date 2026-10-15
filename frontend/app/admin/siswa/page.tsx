@@ -513,10 +513,10 @@ export default function AdminSiswaPage() {
                       <td className="py-3.5 px-4 font-mono text-gray-400">{rowNumber}</td>
                       <td className="py-3.5 px-4 font-bold text-gray-900">
                         <div className="flex items-center gap-2.5">
-                          <span className={`inline-flex items-center justify-center w-7 h-7 rounded-lg text-xs shrink-0 ${
+                          <span className={`inline-flex items-center justify-center w-7 h-7 rounded-lg text-xs font-bold shrink-0 ${
                             isTeacher ? "bg-purple-100 text-purple-700" : "bg-blue-100 text-blue-700"
                           }`}>
-                            {isTeacher ? "👨‍🏫" : "🎓"}
+                            {isTeacher ? "G" : "S"}
                           </span>
                           <div>
                             <span>{student.full_name}</span>

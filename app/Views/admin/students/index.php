@@ -49,7 +49,7 @@
 
     <a href="<?= url('admin/siswa?' . http_build_query(array_merge($filters, ['category' => 'siswa', 'page' => 1]))) ?>" 
        class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl text-xs font-bold transition-all <?= ($filters['category'] ?? '') === 'siswa' ? 'bg-pink-600 text-white shadow-xs' : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50' ?>">
-      <span>🎓 Data Siswa</span>
+      <span>Data Siswa</span>
       <span class="px-2 py-0.5 rounded-full text-[10px] <?= ($filters['category'] ?? '') === 'siswa' ? 'bg-pink-700 text-white' : 'bg-pink-50 text-pink-700' ?>">
         <?= number_format($counts['total_siswa'] ?? 770, 0, ',', '.') ?>
       </span>
@@ -57,7 +57,7 @@
 
     <a href="<?= url('admin/siswa?' . http_build_query(array_merge($filters, ['category' => 'guru', 'page' => 1]))) ?>" 
        class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl text-xs font-bold transition-all <?= ($filters['category'] ?? '') === 'guru' ? 'bg-purple-600 text-white shadow-xs' : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50' ?>">
-      <span>👨‍🏫 Dewan Guru</span>
+      <span>Dewan Guru</span>
       <span class="px-2 py-0.5 rounded-full text-[10px] <?= ($filters['category'] ?? '') === 'guru' ? 'bg-purple-700 text-white' : 'bg-purple-50 text-purple-700' ?>">
         <?= number_format($counts['total_guru'] ?? 52, 0, ',', '.') ?>
       </span>

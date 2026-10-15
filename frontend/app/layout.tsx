@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | E-Voting OSIS SMPN 2 Balung",
   },
   description:
-    "Sistem pemilihan Ketua dan Wakil Ketua OSIS SMPN 2 Balung periode 2026/2027 secara online, transparan, dan real-time. Berikan suaramu untuk kandidat pilihanmu!",
+    "Situs resmi pemilihan Ketua dan Wakil Ketua OSIS SMP Negeri 2 Balung periode 2026/2027. Salurkan hak suara Anda secara jujur, langsung, dan rahasia.",
   keywords: [
     "pemilihan osis",
     "osis smpn 2 balung",
@@ -59,28 +59,29 @@ export const metadata: Metadata = {
     locale: "id_ID",
     url: "/",
     siteName: "E-Voting OSIS SMPN 2 Balung",
-    title: "🗳️ E-Voting OSIS SMPN 2 Balung 2026/2027",
+    title: "E-Voting OSIS SMPN 2 Balung 2026/2027",
     description:
-      "Sistem pemilihan OSIS online yang transparan & real-time. Vote sekarang untuk kandidat pilihanmu! 🎓",
+      "Situs resmi pemilihan Ketua dan Wakil Ketua OSIS SMP Negeri 2 Balung periode 2026/2027. Salurkan hak suara Anda secara jujur, langsung, dan rahasia.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.png?v=20261015",
         width: 1200,
         height: 630,
-        alt: "E-Voting OSIS SMPN 2 Balung 2026/2027",
+        alt: "E-Voting OSIS SMP Negeri 2 Balung",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "🗳️ E-Voting OSIS SMPN 2 Balung 2026/2027",
-    description: "Vote sekarang untuk kandidat OSIS pilihanmu! Transparan & Real-time.",
-    images: ["/og-image.png"],
+    title: "E-Voting OSIS SMPN 2 Balung 2026/2027",
+    description: "Situs resmi pemilihan Ketua dan Wakil Ketua OSIS SMP Negeri 2 Balung periode 2026/2027.",
+    images: ["/og-image.png?v=20261015"],
   },
   icons: {
     icon: [
-      { url: "/logo.png" },
+      { url: "/favicon.ico" },
+      { url: "/logo.png", type: "image/png" },
       { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
