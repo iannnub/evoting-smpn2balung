@@ -11,7 +11,10 @@
     <div class="text-6xl font-black text-rose-500 mb-2">500</div>
     <h1 class="text-xl font-bold text-gray-800 mb-2">Terjadi Kesalahan Server</h1>
     <p class="text-sm text-gray-500 mb-6">Sistem sedang mengalami kendala sementara. Tim admin telah mencatat pesan kesalahan ini.</p>
-    <?php if (!empty($errorMessage)): ?>
+    <?php 
+    $showDetails = (config('app.env') === 'development') || (env('APP_DEBUG') === 'true' || env('APP_DEBUG') === true);
+    if ($showDetails && !empty($errorMessage)): 
+    ?>
       <div class="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-xl text-left text-xs font-mono text-rose-800 break-all leading-relaxed">
         <strong>Detail Error:</strong><br><?= htmlspecialchars($errorMessage) ?>
         <?php if (!empty($errorFile)): ?>

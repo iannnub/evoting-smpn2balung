@@ -28,6 +28,15 @@ class AuthController extends Controller
 
     public function login(): void
     {
+        $ip = client_ip();
+        if (!rate_limit("login_admin_{$ip}", 5, 60)) {
+            if (is_api_request()) {
+                $this->json(['success' => false, 'message' => 'Terlalu banyak percobaan login. Silakan tunggu 1 menit.'], 429);
+            }
+            flash('error', 'Terlalu banyak percobaan login. Silakan tunggu 1 menit sebelum mencoba kembali.');
+            $this->back();
+        }
+
         $body = request_json();
         $email = trim((string) ($body['email'] ?? $_POST['email'] ?? ''));
         $password = (string) ($body['password'] ?? $_POST['password'] ?? '');
