@@ -142,7 +142,7 @@
                 </td>
                 <td class="py-4 px-6">
                   <div class="flex items-center gap-3.5">
-                    <img src="<?= candidate_photo($r['photo_filename']) ?>" alt="" class="w-12 h-12 rounded-xl object-cover bg-pink-100 shrink-0">
+                    <img src="<?= candidate_photo($r['photo_filename'], (int) $r['order_number']) ?>" alt="" class="w-12 h-12 rounded-xl object-cover bg-pink-100 shrink-0">
                     <div>
                       <div class="font-bold text-gray-900 text-base leading-tight">
                         <?= e($r['candidate_name']) ?>
@@ -189,7 +189,7 @@
     const labels = <?= json_encode(array_column($results, 'candidate_name')) ?>;
     const data = <?= json_encode(array_map('intval', array_column($results, 'total_votes'))) ?>;
     initVoteChart('voteChart', labels, data);
-    startLiveResultsPolling('<?= url("api/votes/results") ?>', 3000);
+    startLiveResultsPolling('<?= url("api/votes/results") ?>', 10000);
   });
 </script>
 <?php endif; ?>

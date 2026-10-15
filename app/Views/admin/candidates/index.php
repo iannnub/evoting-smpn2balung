@@ -65,7 +65,7 @@
                 </td>
                 <td class="py-4 px-6">
                   <div class="flex items-center gap-3.5">
-                    <img src="<?= candidate_photo($c['photo_filename']) ?>" alt="" class="w-12 h-12 rounded-xl object-cover bg-pink-50 shrink-0">
+                    <img src="<?= candidate_photo($c['photo_filename'], (int) $c['order_number']) ?>" alt="" class="w-12 h-12 rounded-xl object-cover bg-pink-50 shrink-0">
                     <div>
                       <div class="font-bold text-gray-900 text-base leading-tight"><?= e($c['full_name']) ?></div>
                       <a href="<?= url('kandidat/' . $c['id']) ?>" target="_blank" class="text-xs text-pink-600 hover:underline inline-block mt-0.5">Lihat di Publik ↗</a>

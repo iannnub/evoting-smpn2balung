@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "https://evoting-smpn2balung.infinityfreeapp.com/:path*",
+      "permanent": false
+    }
+  ]
+}

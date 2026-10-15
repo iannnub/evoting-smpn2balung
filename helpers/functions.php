@@ -63,17 +63,23 @@ function asset(string $path): string
     return url('assets/' . ltrim($path, '/')) . '?v=' . $version;
 }
 
-function candidate_photo(?string $filename): string
+function candidate_photo(?string $filename, ?int $orderNumber = null): string
 {
     if ($filename && is_file(BASE_PATH . '/public/uploads/candidates/' . $filename)) {
         return url('uploads/candidates/' . rawurlencode($filename));
     }
+    if ($orderNumber === 1 && is_file(BASE_PATH . '/public/assets/img/candidates/kandidat-1.svg')) {
+        return asset('img/candidates/kandidat-1.svg');
+    }
+    if ($orderNumber === 2 && is_file(BASE_PATH . '/public/assets/img/candidates/kandidat-2.svg')) {
+        return asset('img/candidates/kandidat-2.svg');
+    }
     return asset('img/default-avatar.svg');
 }
 
-function candidate_photo_url(?string $filename): string
+function candidate_photo_url(?string $filename, ?int $orderNumber = null): string
 {
-    return candidate_photo($filename);
+    return candidate_photo($filename, $orderNumber);
 }
 
 function is_api_request(): bool

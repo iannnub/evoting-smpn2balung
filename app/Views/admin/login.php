@@ -19,18 +19,18 @@
 
       <div>
         <label for="email" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-          Email Admin
+          Email Administrator
         </label>
-        <input type="email" id="email" name="email" value="<?= e(old('email', 'admin@smpn2balung.sch.id')) ?>" required autofocus class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-pink-500 focus:outline-none focus:ring-4 focus:ring-pink-100 text-sm font-medium transition-all">
+        <input type="email" id="email" name="email" value="<?= e(old('email', '')) ?>" placeholder="nama@smpn2balung.sch.id" required autofocus autocomplete="email" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-pink-500 focus:outline-none focus:ring-4 focus:ring-pink-100 text-sm font-medium transition-all">
       </div>
 
       <div>
         <div class="flex items-center justify-between mb-1.5">
           <label for="password" class="block text-xs font-bold text-gray-700 uppercase tracking-wider">
-            Password
+            Kata Sandi
           </label>
         </div>
-        <input type="password" id="password" name="password" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-pink-500 focus:outline-none focus:ring-4 focus:ring-pink-100 text-sm font-medium transition-all">
+        <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-pink-500 focus:outline-none focus:ring-4 focus:ring-pink-100 text-sm font-medium transition-all">
       </div>
 
       <button type="submit" class="w-full py-3.5 rounded-xl text-white font-bold text-sm gradient-pink shadow-md hover:brightness-105 active:scale-98 transition-all">

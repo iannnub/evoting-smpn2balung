@@ -71,12 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const isCandidate = s.is_candidate === 1 || s.is_candidate === true;
             const alreadyVoted = s.has_voted === 1 || s.has_voted === true;
 
+            const isTeacher = (s.class || '').toUpperCase() === 'GURU';
+            const classLabel = isTeacher ? 'Dewan Guru' : `Kelas ${escapeHtml(s.class)}`;
+
             if (isCandidate) {
               html += `
                 <div class="p-3 border-b border-gray-100 bg-amber-50/70 text-amber-900 cursor-not-allowed flex items-center justify-between">
                   <div>
                     <div class="font-medium">${escapeHtml(s.full_name)}</div>
-                    <div class="text-xs text-amber-700">Kelas ${escapeHtml(s.class)} ${s.nis ? '• NISN: ' + escapeHtml(s.nis) : ''}</div>
+                    <div class="text-xs text-amber-700">${classLabel} ${s.nis ? '• NISN: ' + escapeHtml(s.nis) : ''}</div>
                   </div>
                   <span class="text-xs font-semibold px-2.5 py-1 bg-amber-200 text-amber-900 rounded-full">Kandidat (Tidak Memilih)</span>
                 </div>
@@ -86,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="p-3 border-b border-gray-100 bg-gray-50 text-gray-400 cursor-not-allowed flex items-center justify-between">
                   <div>
                     <div class="font-medium line-through">${escapeHtml(s.full_name)}</div>
-                    <div class="text-xs text-gray-400">Kelas ${escapeHtml(s.class)} ${s.nis ? '• NISN: ' + escapeHtml(s.nis) : ''}</div>
+                    <div class="text-xs text-gray-400">${classLabel} ${s.nis ? '• NISN: ' + escapeHtml(s.nis) : ''}</div>
                   </div>
                   <span class="text-xs font-semibold px-2 py-1 bg-amber-100 text-amber-800 rounded-full">Sudah Memilih</span>
                 </div>
@@ -97,9 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
                      data-id="${s.id}" data-name="${escapeHtml(s.full_name)}" data-class="${escapeHtml(s.class)}" data-nis="${escapeHtml(s.nis || '')}">
                   <div>
                     <div class="font-medium text-gray-800">${escapeHtml(s.full_name)}</div>
-                    <div class="text-xs text-gray-500">Kelas ${escapeHtml(s.class)} ${s.nis ? '• NISN: ' + escapeHtml(s.nis) : ''}</div>
+                    <div class="text-xs text-gray-500">${classLabel} ${s.nis ? '• NISN: ' + escapeHtml(s.nis) : ''}</div>
                   </div>
-                  <span class="text-xs font-semibold px-2 py-1 bg-pink-100 text-pink-700 rounded-full">Pilih</span>
+                  <span class="text-xs font-semibold px-2.5 py-1 ${isTeacher ? 'bg-purple-100 text-purple-700' : 'bg-pink-100 text-pink-700'} rounded-full">${isTeacher ? 'Dewan Guru' : 'Pilih'}</span>
                 </div>
               `;
             }
@@ -119,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
           });
         } catch (err) {
-          searchResults.innerHTML = '<div class="p-4 text-center text-rose-500 text-sm">Gagal memuat data siswa. Coba lagi.</div>';
+          searchResults.innerHTML = '<div class="p-4 text-center text-rose-500 text-sm">Gagal memuat data pemilih. Coba lagi.</div>';
         }
       }, 300);
     });
@@ -129,16 +132,21 @@ document.addEventListener('DOMContentLoaded', () => {
     selectedStudent = student;
     studentIdInput.value = student.id;
 
+    const isTeacher = (student.class || '').toUpperCase() === 'GURU';
     selectedStudentName.textContent = student.full_name;
-    selectedStudentClass.textContent = `Kelas ${student.class}`;
-    selectedStudentNis.textContent = student.nis ? `NISN: ${student.nis}` : 'NISN: -';
+    selectedStudentClass.textContent = isTeacher ? 'Dewan Guru' : `Kelas ${student.class}`;
+    selectedStudentNis.textContent = isTeacher ? 'Kategori: Dewan Guru' : (student.nis ? `NISN: ${student.nis}` : 'NISN: -');
 
     searchInput.classList.add('hidden');
     searchResults.classList.add('hidden');
     selectedStudentCard.classList.remove('hidden');
 
     if (requireNisn && nisnVerificationBox) {
-      nisnVerificationBox.classList.remove('hidden');
+      if (isTeacher || !student.nis) {
+        nisnVerificationBox.classList.add('hidden');
+      } else {
+        nisnVerificationBox.classList.remove('hidden');
+      }
     }
 
     btnStep1Next.disabled = false;
@@ -230,7 +238,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Candidate selection listener
   document.querySelectorAll('input[name="candidate_id"]').forEach((radio) => {
     radio.addEventListener('change', (e) => {
+      document.querySelectorAll('.candidate-card-label').forEach((lbl) => {
+        lbl.classList.remove('border-pink-500', 'bg-pink-50/50', 'ring-4', 'ring-pink-100');
+        lbl.classList.add('border-gray-200');
+      });
+
       const card = e.target.closest('.candidate-select-card');
+      const label = card ? card.querySelector('.candidate-card-label') : null;
+      if (label) {
+        label.classList.remove('border-gray-200');
+        label.classList.add('border-pink-500', 'bg-pink-50/50', 'ring-4', 'ring-pink-100');
+      }
+
       selectedCandidate = {
         id: e.target.value,
         name: card.getAttribute('data-name'),

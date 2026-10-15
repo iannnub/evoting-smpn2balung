@@ -152,7 +152,7 @@
           <?php foreach ($candidates as $c): ?>
             <div class="py-3 flex items-center justify-between">
               <div class="flex items-center gap-3">
-                <img src="<?= candidate_photo($c['photo_filename']) ?>" alt="" class="w-10 h-10 rounded-xl object-cover bg-pink-50">
+                <img src="<?= candidate_photo($c['photo_filename'], (int) $c['order_number']) ?>" alt="" class="w-10 h-10 rounded-xl object-cover bg-pink-50">
                 <div>
                   <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-pink-50 text-pink-700">Nomor <?= $c['order_number'] ?></span>
                   <div class="font-bold text-sm text-gray-800"><?= e($c['full_name']) ?></div>

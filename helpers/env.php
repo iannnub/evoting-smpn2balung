@@ -15,7 +15,7 @@ function load_env(string $path): void
     // 2. Jika ada env.php, override nilai (khusus server hosting jika .env tidak ada atau di server non-localhost)
     if (is_file($dir . '/env.php')) {
         $serverName = $_SERVER['SERVER_NAME'] ?? $_SERVER['HTTP_HOST'] ?? '';
-        $isLocalhost = ($serverName === 'localhost' || str_starts_with($serverName, '127.0.0.1'));
+        $isLocalhost = ($serverName === 'localhost' || str_starts_with($serverName, '127.0.0.1') || (php_sapi_name() === 'cli' && is_file($path)));
         if (!is_file($path) || !$isLocalhost) {
             $data = require $dir . '/env.php';
             if (is_array($data)) {

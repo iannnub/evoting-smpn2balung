@@ -48,7 +48,7 @@
     <div class="flex items-center justify-between max-w-md mx-auto mb-10 text-xs font-semibold">
       <div class="step-item is-active" id="step-nav-1">
         <div id="indicator-step-1" class="step-circle bg-pink-600 text-white shadow-xs">1</div>
-        <span class="mt-1 block text-gray-700">Data Siswa</span>
+        <span class="mt-1 block text-gray-700">Data Pemilih</span>
       </div>
       <div class="step-item" id="step-nav-2">
         <div id="indicator-step-2" class="step-circle bg-gray-200 text-gray-500">2</div>
@@ -67,11 +67,11 @@
     <!-- Vote Form Container -->
     <div id="vote-form" data-base-url="<?= url() ?>" data-require-nisn="<?= !empty($period['require_nisn_verification']) ? '1' : '0' ?>" class="bg-white rounded-3xl p-6 sm:p-10 border border-gray-100 shadow-sm">
       
-      <!-- STEP 1: IDENTIFIKASI SISWA -->
+      <!-- STEP 1: IDENTIFIKASI PEMILIH -->
       <div id="step-1" class="space-y-6">
         <div>
-          <h2 class="text-lg font-bold text-gray-900">Langkah 1: Temukan Nama Siswa</h2>
-          <p class="text-xs sm:text-sm text-gray-500">Ketik minimal 3 huruf nama lengkap Anda untuk mencari dalam Daftar Pemilih Tetap (DPT).</p>
+          <h2 class="text-lg font-bold text-gray-900">Langkah 1: Temukan Nama Pemilih</h2>
+          <p class="text-xs sm:text-sm text-gray-500">Cukup ketik nama Anda (Siswa atau Guru). Anda tidak perlu menghafal NISN.</p>
         </div>
 
         <input type="hidden" id="selected-student-id" name="student_id" value="">
@@ -79,7 +79,7 @@
         <!-- Search Input -->
         <div class="relative">
           <div class="relative">
-            <input type="text" id="student-search" autocomplete="off" placeholder="Ketik nama lengkap atau NISN Anda di sini..." class="w-full px-4 py-3.5 pl-11 rounded-2xl border-2 border-gray-200 focus:border-pink-500 focus:outline-none focus:ring-4 focus:ring-pink-100 text-sm font-medium transition-all">
+            <input type="text" id="student-search" autocomplete="off" placeholder="Ketik nama Anda di sini (contoh: Fatir, Nabila, atau Rofik)..." class="w-full px-4 py-3.5 pl-11 rounded-2xl border-2 border-gray-200 focus:border-pink-500 focus:outline-none focus:ring-4 focus:ring-pink-100 text-sm font-medium transition-all">
             <svg class="w-5 h-5 text-gray-400 absolute left-3.5 top-4 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -137,13 +137,13 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <?php foreach ($candidates as $c): ?>
-            <div class="relative candidate-select-card" data-name="<?= e($c['full_name']) ?>" data-photo="<?= candidate_photo($c['photo_filename']) ?>">
+            <div class="relative candidate-select-card" data-name="<?= e($c['full_name']) ?>" data-photo="<?= candidate_photo($c['photo_filename'], (int) $c['order_number']) ?>">
               <input type="radio" name="candidate_id" id="cand-<?= $c['id'] ?>" value="<?= $c['id'] ?>" class="candidate-radio sr-only">
-              <label for="cand-<?= $c['id'] ?>" class="block p-4 rounded-2xl border-2 border-gray-200 cursor-pointer transition-all hover:border-pink-300 hover:bg-pink-50/30">
+              <label for="cand-<?= $c['id'] ?>" class="candidate-card-label block p-4 rounded-2xl border-2 border-gray-200 cursor-pointer transition-all hover:border-pink-300 hover:bg-pink-50/30">
                 <div class="flex items-center gap-4">
                   <!-- Photo -->
                   <div class="relative w-16 h-16 rounded-xl overflow-hidden bg-pink-100 shrink-0">
-                    <img src="<?= candidate_photo($c['photo_filename']) ?>" alt="<?= e($c['full_name']) ?>" class="w-full h-full object-cover">
+                    <img src="<?= candidate_photo($c['photo_filename'], (int) $c['order_number']) ?>" alt="<?= e($c['full_name']) ?>" class="w-full h-full object-cover">
                     <span class="absolute top-1 left-1 w-6 h-6 rounded-full bg-pink-600 text-white text-xs font-bold flex items-center justify-center">
                       <?= $c['order_number'] ?>
                     </span>

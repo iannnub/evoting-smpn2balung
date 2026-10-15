@@ -15,7 +15,7 @@
       <!-- Photo Column -->
       <div class="flex flex-col items-center">
         <div class="relative w-full max-w-[280px] aspect-square rounded-2xl overflow-hidden bg-pink-50 shadow-md">
-          <img src="<?= candidate_photo($candidate['photo_filename']) ?>" alt="Foto <?= e($candidate['full_name']) ?>" class="w-full h-full object-cover">
+          <img src="<?= candidate_photo($candidate['photo_filename'], (int) $candidate['order_number']) ?>" alt="Foto <?= e($candidate['full_name']) ?>" class="w-full h-full object-cover">
           <div class="absolute top-3 left-3">
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full font-bold text-white gradient-pink shadow-md">
               <?= $candidate['order_number'] ?: '?' ?>

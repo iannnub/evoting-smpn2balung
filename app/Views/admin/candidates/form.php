@@ -47,9 +47,9 @@
         <div class="flex flex-col sm:flex-row items-center gap-6 p-4 rounded-2xl border-2 border-dashed border-pink-200 bg-pink-50/30">
           <div class="w-24 h-24 rounded-2xl bg-white border border-pink-100 shadow-xs overflow-hidden shrink-0 flex items-center justify-center">
             <?php if (!empty($candidate['photo_filename'])): ?>
-              <img id="photo-preview" src="<?= candidate_photo_url($candidate['photo_filename']) ?>" alt="Preview" class="w-full h-full object-cover">
+              <img id="photo-preview" src="<?= candidate_photo_url($candidate['photo_filename'], (int) ($candidate['order_number'] ?? 1)) ?>" alt="Preview" class="w-full h-full object-cover">
             <?php else: ?>
-              <img id="photo-preview" src="<?= asset('img/default-avatar.svg') ?>" alt="Default" class="w-full h-full object-cover opacity-60">
+              <img id="photo-preview" src="<?= candidate_photo_url(null, (int) ($candidate['order_number'] ?? 1)) ?>" alt="Default" class="w-full h-full object-cover opacity-80">
             <?php endif; ?>
           </div>
           <div class="flex-1 w-full text-center sm:text-left">
