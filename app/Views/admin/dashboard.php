@@ -1,7 +1,7 @@
 <div class="space-y-8">
 
   <!-- Active Period Banner -->
-  <div class="bg-gradient-to-r from-pink-600 via-pink-700 to-purple-800 rounded-3xl p-6 sm:p-8 text-white shadow-lg relative overflow-hidden">
+  <div class="bg-pink-700 rounded-3xl p-6 sm:p-8 text-white shadow-lg relative overflow-hidden">
     <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
       <div>
         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-white/20 backdrop-blur-md mb-2">

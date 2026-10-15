@@ -12,7 +12,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="<?= asset('css/style.css') ?>">
 </head>
-<body class="min-h-full flex flex-col justify-center bg-gradient-to-br from-pink-50 via-slate-50 to-purple-50 antialiased p-4">
+<body class="min-h-full flex flex-col justify-center bg-slate-50 antialiased p-4">
 
   <?php require BASE_PATH . '/app/Views/components/alert.php'; ?>
 

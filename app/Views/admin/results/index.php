@@ -84,7 +84,7 @@
     <?php else: ?>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <?php foreach ($results as $c): ?>
-          <div class="rounded-3xl border border-gray-100 p-5 bg-gradient-to-b from-white to-pink-50/20 shadow-xs flex flex-col justify-between relative overflow-hidden">
+          <div class="rounded-3xl border border-gray-100 p-5 bg-white shadow-xs flex flex-col justify-between relative overflow-hidden">
             <div class="absolute top-4 right-4 w-9 h-9 rounded-xl gradient-pink text-white font-extrabold flex items-center justify-center text-sm shadow-xs">
               #<?= $c['order_number'] ?>
             </div>

@@ -38,7 +38,7 @@ export default function HomePage() {
   return (
     <div className="space-y-16 pb-20">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-pink-50/70 via-white to-slate-50 border-b border-pink-100/60 pt-12 pb-20 sm:pt-20 sm:pb-28">
+      <section className="relative overflow-hidden bg-slate-50 border-b border-gray-100 pt-12 pb-20 sm:pt-20 sm:pb-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           
           {/* School Badge */}

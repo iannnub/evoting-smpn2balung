@@ -1,4 +1,4 @@
-<aside id="admin-sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-gradient-to-b from-pink-600 via-pink-700 to-purple-800 text-white flex flex-col transition-transform duration-300 ease-in-out -translate-x-full lg:translate-x-0 shadow-xl">
+<aside id="admin-sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-pink-700 text-white flex flex-col transition-transform duration-300 ease-in-out -translate-x-full lg:translate-x-0 shadow-xl">
   <!-- Brand -->
   <div class="h-20 flex items-center gap-3 px-6 border-b border-white/10">
     <img src="<?= asset('img/logo.png') ?>" alt="Logo" class="h-10 w-auto bg-white/10 p-1 rounded-lg">

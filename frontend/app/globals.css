@@ -14,7 +14,11 @@
 }
 
 .gradient-pink {
-  background: linear-gradient(135deg, #ec4899 0%, #db2777 50%, #9333ea 100%);
+  background-color: #db2777;
+}
+
+.gradient-pink:hover {
+  background-color: #be185d;
 }
 
 .glass-card {

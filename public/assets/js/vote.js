@@ -34,7 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnModalCancel = document.getElementById('btn-modal-cancel');
   const btnModalSubmit = document.getElementById('btn-modal-submit');
 
-  const baseUrl = form.getAttribute('data-base-url') || '';
+  const rawBase = (form.getAttribute('data-base-url') || '').trim();
+  const baseUrl = (rawBase === '/' || rawBase === '') ? '' : rawBase.replace(/\/+$/, '');
+  const apiUrl = (endpoint) => {
+    const clean = '/' + endpoint.replace(/^\/+/, '');
+    return baseUrl ? `${baseUrl}${clean}` : clean;
+  };
+
   const requireNisn = form.getAttribute('data-require-nisn') === '1';
 
   let selectedStudent = null;
@@ -58,7 +64,23 @@ document.addEventListener('DOMContentLoaded', () => {
           searchResults.classList.remove('hidden');
           searchResults.innerHTML = '<div class="p-4 text-center text-gray-500 text-sm">Mencari siswa...</div>';
 
-          const res = await fetch(`${baseUrl}/api/students/search?q=${encodeURIComponent(q)}`);
+          const res = await fetch(apiUrl(`/api/students/search?q=${encodeURIComponent(q)}`), {
+            headers: {
+              'Accept': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest',
+            },
+          });
+
+          if (!res.ok) {
+            try {
+              const errJson = await res.json();
+              searchResults.innerHTML = `<div class="p-4 text-center text-gray-500 text-sm">${escapeHtml(errJson.message || 'Siswa tidak ditemukan dalam DPT.')}</div>`;
+            } catch (_) {
+              searchResults.innerHTML = '<div class="p-4 text-center text-rose-500 text-sm">Gagal memuat data pemilih. Silakan coba lagi.</div>';
+            }
+            return;
+          }
+
           const json = await res.json();
 
           if (!json.success || !json.data || json.data.length === 0) {
@@ -193,7 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         btnStep1Next.disabled = true;
         btnStep1Next.textContent = 'Memeriksa...';
-        const res = await fetch(`${baseUrl}/api/votes/check/${selectedStudent.id}`);
+        const res = await fetch(apiUrl(`/api/votes/check/${selectedStudent.id}`), {
+          headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
+        });
         const check = await res.json();
 
         if (check.data && check.data.has_voted) {
@@ -309,11 +333,12 @@ document.addEventListener('DOMContentLoaded', () => {
           nisn_last4: nisnInput ? nisnInput.value.trim() : '',
         };
 
-        const res = await fetch(`${baseUrl}/api/votes`, {
+        const res = await fetch(apiUrl('/api/votes'), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
           },
           body: JSON.stringify(payload)
         });

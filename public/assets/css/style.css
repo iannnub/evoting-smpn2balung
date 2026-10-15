@@ -23,13 +23,18 @@ body {
 }
 
 .gradient-pink {
-  background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+  background-color: #db2777;
+}
+
+.gradient-pink:hover {
+  background-color: #be185d;
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #db2777 0%, #9333ea 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #db2777;
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: initial;
 }
 
 /* Card hover animation */

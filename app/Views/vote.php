@@ -65,7 +65,7 @@
     </div>
 
     <!-- Vote Form Container -->
-    <div id="vote-form" data-base-url="<?= url() ?>" data-require-nisn="<?= !empty($period['require_nisn_verification']) ? '1' : '0' ?>" class="bg-white rounded-3xl p-6 sm:p-10 border border-gray-100 shadow-sm">
+    <div id="vote-form" data-base-url="<?= rtrim(url(), '/') ?>" data-require-nisn="<?= !empty($period['require_nisn_verification']) ? '1' : '0' ?>" class="bg-white rounded-3xl p-6 sm:p-10 border border-gray-100 shadow-sm">
       
       <!-- STEP 1: IDENTIFIKASI PEMILIH -->
       <div id="step-1" class="space-y-6">
