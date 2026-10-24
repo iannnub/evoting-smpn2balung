@@ -236,7 +236,7 @@
               <?php if ($meta['current_page'] > 1): ?>
                 <?php $query['page'] = $meta['current_page'] - 1; ?>
                 <a href="<?= url('admin/siswa?' . http_build_query($query)) ?>" class="px-2.5 py-1.5 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 font-semibold transition-colors">
-                  ← Prev
+                  Sebelumnya
                 </a>
               <?php endif; ?>
 
@@ -271,7 +271,7 @@
               <?php if ($meta['current_page'] < $meta['last_page']): ?>
                 <?php $query['page'] = $meta['current_page'] + 1; ?>
                 <a href="<?= url('admin/siswa?' . http_build_query($query)) ?>" class="px-2.5 py-1.5 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 font-semibold transition-colors">
-                  Next →
+                  Berikutnya
                 </a>
               <?php endif; ?>
             </div>

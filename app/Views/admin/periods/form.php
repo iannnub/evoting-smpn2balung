@@ -2,7 +2,7 @@
 
   <div class="flex items-center justify-between">
     <a href="<?= url('admin/periode') ?>" class="text-xs text-pink-600 hover:underline flex items-center gap-1 font-semibold">
-      ← Kembali ke Daftar Periode
+      Kembali ke Daftar Periode
     </a>
   </div>
 

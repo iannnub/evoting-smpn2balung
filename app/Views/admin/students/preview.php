@@ -12,7 +12,7 @@
   <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-gray-100 shadow-xs">
     <div>
       <div class="flex items-center gap-2 mb-1">
-        <a href="<?= url('admin/import') ?>" class="text-xs text-pink-600 hover:underline font-semibold">← Ganti File</a>
+        <a href="<?= url('admin/import') ?>" class="text-xs text-pink-600 hover:underline font-semibold">Ganti File</a>
         <span class="text-xs text-gray-400">•</span>
         <span class="text-xs text-gray-500 font-mono">File: <?= e($importData['filename'] ?? 'Spreadsheet') ?></span>
       </div>

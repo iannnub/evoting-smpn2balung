@@ -59,7 +59,7 @@
 <!-- Candidates List Section -->
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
   <div class="mb-12 max-w-4xl mx-auto text-center">
-    <span class="text-xs font-extrabold uppercase tracking-wider text-pink-600 block mb-1">Daftar Paslon</span>
+    <span class="text-xs font-extrabold uppercase tracking-wider text-pink-700 block mb-1">Daftar Paslon</span>
     <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">Kandidat Ketua OSIS</h2>
     <p class="text-sm sm:text-base text-gray-500 mt-2 max-w-xl mx-auto">
       Pelajari visi dan misi setiap pasangan calon sebelum menentukan pilihanmu di bilik suara.
@@ -123,7 +123,7 @@
               
               <?php if (!empty($c['vision'])): ?>
                 <div class="mb-4">
-                  <span class="text-xs font-semibold uppercase tracking-wider text-gray-400 block mb-1">Visi Utama</span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">Visi Utama</span>
                   <p class="text-sm text-gray-600 line-clamp-3 leading-relaxed">
                     <?= e(str_limit($c['vision'], 140)) ?>
                   </p>

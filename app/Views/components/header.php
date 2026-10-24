@@ -4,11 +4,11 @@
       
       <!-- Brand & Logo -->
       <a href="<?= url() ?>" class="flex items-center gap-3 group">
-        <img src="<?= asset('img/logo.png') ?>" alt="Logo <?= e(config('app.school')) ?>" class="h-12 w-auto object-contain transition-transform group-hover:scale-105">
+        <img src="<?= asset('img/logo.png') ?>" alt="Logo <?= e(config('app.school')) ?>" width="48" height="48" class="h-12 w-auto object-contain transition-transform group-hover:scale-105">
         <div>
           <span class="block text-xs font-semibold tracking-wider text-pink-600 uppercase">E-VOTING OSIS</span>
           <span class="block text-lg font-bold text-gray-900 group-hover:text-pink-600 transition-colors leading-tight"><?= e(config('app.school')) ?></span>
-          <span class="block text-xs text-gray-400"><?= e(config('app.region')) ?></span>
+          <span class="block text-xs text-slate-500 font-medium"><?= e(config('app.region')) ?></span>
         </div>
       </a>
 

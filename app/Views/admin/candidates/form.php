@@ -2,7 +2,7 @@
 
   <div class="flex items-center justify-between">
     <a href="<?= url('admin/kandidat') ?>" class="text-xs text-pink-600 hover:underline flex items-center gap-1 font-semibold">
-      ← Kembali ke Daftar Kandidat
+      Kembali ke Daftar Kandidat
     </a>
     <span class="text-xs text-gray-400">Periode: <?= e($period['name'] ?? '-') ?></span>
   </div>

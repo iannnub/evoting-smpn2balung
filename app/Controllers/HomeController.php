@@ -131,4 +131,32 @@ class HomeController extends Controller
             ],
         ]);
     }
+
+    public function robots(): never
+    {
+        header('Content-Type: text/plain; charset=utf-8');
+        echo "User-agent: *\n";
+        echo "Allow: /\n";
+        echo "Disallow: /admin\n";
+        echo "Disallow: /api/admin\n\n";
+        echo "Sitemap: " . absolute_url('sitemap.xml') . "\n";
+        exit;
+    }
+
+    public function sitemap(): never
+    {
+        header('Content-Type: application/xml; charset=utf-8');
+        echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+        echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+        $urls = ['', 'vote', 'hasil'];
+        foreach ($urls as $u) {
+            echo "  <url>\n";
+            echo "    <loc>" . htmlspecialchars(absolute_url($u)) . "</loc>\n";
+            echo "    <changefreq>daily</changefreq>\n";
+            echo "    <priority>" . ($u === '' ? '1.0' : '0.8') . "</priority>\n";
+            echo "  </url>\n";
+        }
+        echo '</urlset>' . "\n";
+        exit;
+    }
 }

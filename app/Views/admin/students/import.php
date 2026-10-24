@@ -2,7 +2,7 @@
 
   <div class="flex items-center justify-between">
     <a href="<?= url('admin/siswa') ?>" class="text-xs text-pink-600 hover:underline flex items-center gap-1 font-semibold">
-      ← Kembali ke Daftar Siswa
+      Kembali ke Daftar Siswa
     </a>
     <span class="text-xs text-gray-400">Periode: <?= e($period['name'] ?? '-') ?></span>
   </div>

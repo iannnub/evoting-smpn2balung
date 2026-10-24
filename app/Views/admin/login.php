@@ -39,7 +39,7 @@
 
       <div class="pt-4 border-t border-gray-100 text-center">
         <a href="<?= url() ?>" class="text-xs text-pink-600 hover:underline font-medium">
-          ← Kembali ke Halaman Pemilihan Publik
+          Kembali ke Halaman Pemilihan Publik
         </a>
       </div>
     </form>

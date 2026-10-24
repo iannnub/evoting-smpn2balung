@@ -124,7 +124,7 @@
         <!-- Next button -->
         <div class="pt-4 flex justify-end">
           <button type="button" id="btn-step1-next" disabled class="px-8 py-3.5 rounded-full text-white font-bold text-sm bg-pink-600 hover:bg-pink-700 shadow-sm opacity-50 cursor-not-allowed transition-all">
-            Lanjut Pilih Kandidat →
+            Lanjut Pilih Kandidat
           </button>
         </div>
       </div>
@@ -221,10 +221,10 @@
 
         <div class="pt-6 border-t border-gray-100 flex items-center justify-between">
           <button type="button" id="btn-step2-back" class="px-6 py-2.5 rounded-full border border-gray-200 text-gray-600 text-sm font-semibold hover:bg-gray-50 transition-colors">
-            ← Kembali
+            Kembali
           </button>
           <button type="button" id="btn-step2-next" disabled class="px-8 py-3.5 rounded-full text-white font-bold text-sm bg-pink-600 hover:bg-pink-700 shadow-sm opacity-50 cursor-not-allowed transition-all">
-            Lanjut ke Konfirmasi →
+            Lanjut ke Konfirmasi
           </button>
         </div>
       </div>
@@ -251,7 +251,7 @@
 
         <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
           <a href="<?= url('hasil') ?>" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-pink-600 hover:bg-pink-700 text-white font-bold text-sm shadow-sm transition-colors">
-            Lihat Hasil Sementara →
+            Lihat Hasil Sementara
           </a>
           <a href="<?= url() ?>" class="w-full sm:w-auto px-6 py-3.5 rounded-full border border-gray-200 text-gray-600 font-semibold text-sm hover:bg-gray-50 transition-colors">
             Kembali ke Beranda

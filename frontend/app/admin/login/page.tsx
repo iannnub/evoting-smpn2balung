@@ -112,7 +112,7 @@ export default function AdminLoginPage() {
         {/* Back Link */}
         <div className="text-center mt-6">
           <Link href="/" className="text-xs font-semibold text-slate-500 hover:text-slate-300 transition-colors">
-            ← Kembali ke Website Sekolah
+            Kembali ke Website Sekolah
           </Link>
         </div>
 

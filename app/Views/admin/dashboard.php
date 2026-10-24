@@ -128,7 +128,7 @@
     <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xs flex flex-col">
       <h3 class="text-base font-bold text-gray-900 mb-4 flex items-center justify-between">
         <span>Grafik Hasil Suara</span>
-        <a href="<?= url('admin/hasil') ?>" class="text-xs text-pink-600 hover:underline font-semibold">Lihat Detail →</a>
+        <a href="<?= url('admin/hasil') ?>" class="text-xs text-pink-600 hover:underline font-semibold">Lihat Detail</a>
       </h3>
       <div class="h-64 flex-1">
         <canvas id="dashVoteChart"></canvas>
@@ -139,7 +139,7 @@
     <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xs flex flex-col">
       <h3 class="text-base font-bold text-gray-900 mb-4 flex items-center justify-between">
         <span>Kandidat Terdaftar</span>
-        <a href="<?= url('admin/kandidat') ?>" class="text-xs text-pink-600 hover:underline font-semibold">Kelola Semua →</a>
+        <a href="<?= url('admin/kandidat') ?>" class="text-xs text-pink-600 hover:underline font-semibold">Kelola Semua</a>
       </h3>
 
       <?php if (empty($candidates)): ?>

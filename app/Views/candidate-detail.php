@@ -83,7 +83,7 @@
 
         <div class="pt-4 flex justify-between items-center text-sm">
           <a href="<?= url() ?>" class="text-pink-600 hover:underline flex items-center gap-1 font-medium">
-            ← Kembali ke Daftar Kandidat
+            Kembali ke Daftar Kandidat
           </a>
         </div>
 

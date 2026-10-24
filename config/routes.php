@@ -9,6 +9,8 @@ return [
     ['GET', '/kandidat/{id}', 'HomeController@candidate'],
     ['GET', '/vote', 'VoteController@index'],
     ['GET', '/hasil', 'ResultController@index'],
+    ['GET', '/robots.txt', 'HomeController@robots'],
+    ['GET', '/sitemap.xml', 'HomeController@sitemap'],
 
     // API publik
     ['GET', '/api/candidates', 'HomeController@apiCandidates'],

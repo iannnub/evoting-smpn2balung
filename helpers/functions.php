@@ -56,11 +56,29 @@ function url(string $path = ''): string
     return BASE_URL . '/' . ltrim($path, '/');
 }
 
+function absolute_url(string $path = ''): string
+{
+    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+    $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+        || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
+    $scheme = $isHttps ? 'https' : 'http';
+    return $scheme . '://' . $host . url($path);
+}
+
 function asset(string $path): string
 {
     $file = BASE_PATH . '/public/assets/' . ltrim($path, '/');
     $version = is_file($file) ? filemtime($file) : 0;
     return url('assets/' . ltrim($path, '/')) . '?v=' . $version;
+}
+
+function absolute_asset(string $path): string
+{
+    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+    $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+        || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
+    $scheme = $isHttps ? 'https' : 'http';
+    return $scheme . '://' . $host . asset($path);
 }
 
 function candidate_photo(?string $filename, ?int $orderNumber = null): string
