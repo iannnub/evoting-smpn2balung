@@ -11,6 +11,8 @@ class CORS
             'http://127.0.0.1:3000',
             'http://localhost:3001',
             'https://osisvoting.vercel.app',
+            'https://evoting-smpn2balung.vercel.app',
+            'https://evoting-smpn2balung.infinityfreeapp.com',
         ];
 
         $origin = $_SERVER['HTTP_ORIGIN'] ?? '';

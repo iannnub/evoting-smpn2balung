@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { adminGetResults, adminResetVotes, ResultItem, ParticipationStats, GradeStat, ClassStat, Period } from "@/lib/api";
 import { formatNumber, getPhotoUrl } from "@/lib/utils";
 import ResultsChart from "@/components/ResultsChart";
@@ -263,18 +264,13 @@ export default function AdminHasilPage() {
                   <td className="py-4 px-6 font-bold text-gray-900">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-xl overflow-hidden border border-pink-200 bg-pink-50 shrink-0">
-                        <img
+                        <Image
                           src={getPhotoUrl(c.photo_url, c.order_number)}
                           alt={c.candidate_name}
+                          width={40}
+                          height={40}
+                          unoptimized
                           className="w-full h-full object-cover"
-                          onError={(e) => {
-                            (e.currentTarget as HTMLImageElement).src =
-                              c.order_number === 1
-                                ? "/candidates/kandidat-1.svg"
-                                : c.order_number === 2
-                                ? "/candidates/kandidat-2.svg"
-                                : "/default-avatar.svg";
-                          }}
                         />
                       </div>
                       <span className="font-bold text-gray-900 text-sm">{c.candidate_name}</span>

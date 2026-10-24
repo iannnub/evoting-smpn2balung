@@ -44,15 +44,16 @@
       <p class="text-sm text-gray-500 mt-1">Satu siswa hanya dapat memberikan suara sebanyak satu kali.</p>
     </div>
 
+<?php $previewStep2 = (isset($_GET['step']) && $_GET['step'] == '2'); ?>
     <!-- 4-Step Indicator -->
     <div class="flex items-center justify-between max-w-md mx-auto mb-10 text-xs font-semibold">
-      <div class="step-item is-active" id="step-nav-1">
-        <div id="indicator-step-1" class="step-circle bg-pink-600 text-white shadow-xs">1</div>
-        <span class="mt-1 block text-gray-700">Data Pemilih</span>
+      <div class="step-item <?= $previewStep2 ? '' : 'is-active' ?>" id="step-nav-1">
+        <div id="indicator-step-1" class="step-circle <?= $previewStep2 ? 'bg-gray-200 text-gray-500' : 'bg-pink-600 text-white shadow-xs' ?>">1</div>
+        <span class="mt-1 block <?= $previewStep2 ? 'text-gray-400' : 'text-gray-700' ?>">Data Pemilih</span>
       </div>
-      <div class="step-item" id="step-nav-2">
-        <div id="indicator-step-2" class="step-circle bg-gray-200 text-gray-500">2</div>
-        <span class="mt-1 block text-gray-400">Pilih Kandidat</span>
+      <div class="step-item <?= $previewStep2 ? 'is-active' : '' ?>" id="step-nav-2">
+        <div id="indicator-step-2" class="step-circle <?= $previewStep2 ? 'bg-pink-600 text-white shadow-xs' : 'bg-gray-200 text-gray-500' ?>">2</div>
+        <span class="mt-1 block <?= $previewStep2 ? 'text-gray-700' : 'text-gray-400' ?>">Pilih Kandidat</span>
       </div>
       <div class="step-item" id="step-nav-3">
         <div id="indicator-step-3" class="step-circle bg-gray-200 text-gray-500">3</div>
@@ -68,7 +69,7 @@
     <div id="vote-form" data-base-url="<?= rtrim(url(), '/') ?>" data-require-nisn="<?= !empty($period['require_nisn_verification']) ? '1' : '0' ?>" class="bg-white rounded-3xl p-6 sm:p-10 border border-gray-100 shadow-sm">
       
       <!-- STEP 1: IDENTIFIKASI PEMILIH -->
-      <div id="step-1" class="space-y-6">
+      <div id="step-1" class="<?= $previewStep2 ? 'hidden' : '' ?> space-y-6">
         <div>
           <h2 class="text-lg font-bold text-gray-900">Langkah 1: Temukan Nama Pemilih</h2>
           <p class="text-xs sm:text-sm text-gray-500">Cukup ketik nama Anda (Siswa atau Guru). Anda tidak perlu menghafal NISN.</p>
@@ -129,7 +130,7 @@
       </div>
 
       <!-- STEP 2: PILIH KANDIDAT -->
-      <div id="step-2" class="hidden space-y-6">
+      <div id="step-2" class="<?= $previewStep2 ? '' : 'hidden' ?> space-y-6">
         <div>
           <h2 class="text-lg font-bold text-gray-900">Langkah 2: Tentukan Pilihan Anda</h2>
           <p class="text-xs sm:text-sm text-gray-500">Pilih salah satu kandidat Ketua &amp; Wakil Ketua OSIS di bawah ini.</p>

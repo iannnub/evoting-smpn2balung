@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { getResults, ResultItem, ParticipationStats, GradeStat, Period } from "@/lib/api";
 import { formatNumber, getPhotoUrl } from "@/lib/utils";
 import ResultsChart from "@/components/ResultsChart";
@@ -220,18 +221,13 @@ export default function HasilPage() {
             >
               <div className="flex items-center gap-4">
                 <div className="relative h-14 w-14 shrink-0 rounded-2xl overflow-hidden border-2 border-pink-200 bg-pink-50 shadow-sm">
-                  <img
+                  <Image
                     src={getPhotoUrl(c.photo_url, c.order_number)}
                     alt={c.candidate_name}
+                    width={56}
+                    height={56}
+                    unoptimized
                     className="h-full w-full object-cover"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src =
-                        c.order_number === 1
-                          ? "/candidates/kandidat-1.svg"
-                          : c.order_number === 2
-                          ? "/candidates/kandidat-2.svg"
-                          : "/default-avatar.svg";
-                    }}
                   />
                   <div className="absolute top-0 right-0 rounded-bl-xl bg-pink-600 px-1.5 py-0.5 text-[10px] font-black text-white shadow-xs">
                     #{c.order_number}
