@@ -15,6 +15,9 @@ class Router
     {
         $path = '/' . trim($path, '/');
         $method = strtoupper($method);
+        if ($method === 'HEAD') {
+            $method = 'GET';
+        }
 
         // Security check: require authentication on admin routes (except login)
         if (str_starts_with($path, '/admin') && $path !== '/admin/login') {

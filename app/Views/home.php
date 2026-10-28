@@ -39,13 +39,13 @@
 
     <!-- Action Buttons -->
     <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none">
-      <a href="<?= url('vote') ?>" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-pink-600 text-white font-bold text-base shadow-lg shadow-pink-600/25 hover:bg-pink-700 hover:shadow-xl transition-all min-h-[48px]">
+      <a href="<?= url('vote') ?>" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-pink-600 text-white font-bold text-base shadow-lg shadow-pink-600/25 hover:bg-pink-700 hover:shadow-xl apple-btn min-h-[48px]">
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
         <span>Masuk ke Bilik Suara</span>
       </a>
-      <a href="<?= url('hasil') ?>" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-white text-gray-800 border border-gray-200 font-bold text-base hover:bg-gray-50 hover:border-gray-300 transition-all shadow-xs min-h-[48px]">
+      <a href="<?= url('hasil') ?>" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-white text-gray-800 border border-gray-200 font-bold text-base hover:bg-gray-50 hover:border-gray-300 apple-btn shadow-xs min-h-[48px]">
         <svg class="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
@@ -85,7 +85,7 @@
     ?>
     <div class="<?= $gridClass ?>">
       <?php foreach ($candidates as $c): ?>
-        <div class="group bg-white rounded-3xl overflow-hidden border border-gray-200/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col">
+        <div class="group liquid-glass-card rounded-3xl overflow-hidden flex flex-col">
           
           <!-- Explicit photo container height to prevent image collapse or overflow -->
           <div class="relative h-64 sm:h-72 w-full overflow-hidden bg-pink-50">
@@ -133,10 +133,10 @@
 
             <!-- Action buttons -->
             <div class="pt-5 border-t border-gray-100 flex items-center gap-3">
-              <a href="<?= url('kandidat/' . $c['id']) ?>" class="flex-1 py-3 px-4 rounded-xl border border-pink-200 text-pink-600 text-center font-bold text-sm hover:bg-pink-50 transition-colors">
+              <a href="<?= url('kandidat/' . $c['id']) ?>" class="flex-1 py-3 px-4 rounded-xl border border-pink-200 text-pink-600 text-center font-bold text-sm hover:bg-pink-50 apple-btn">
                 Detail Visi Misi
               </a>
-              <a href="<?= url('vote') ?>" class="py-3 px-5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-center font-bold text-sm shadow-xs transition-colors">
+              <a href="<?= url('vote') ?>" class="py-3 px-5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-center font-bold text-sm shadow-xs apple-btn">
                 Pilih
               </a>
             </div>

@@ -9,7 +9,7 @@
     <span class="text-pink-600 font-semibold truncate"><?= e($candidate['full_name']) ?></span>
   </nav>
 
-  <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm p-6 sm:p-10">
+  <div class="liquid-glass rounded-3xl overflow-hidden border border-gray-100/80 shadow-sm p-6 sm:p-10">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
       
       <!-- Photo Column -->
@@ -30,7 +30,7 @@
         </div>
 
         <div class="mt-6 w-full">
-          <a href="<?= url('vote') ?>" class="block w-full py-3.5 px-4 rounded-xl text-center text-white font-bold bg-pink-600 hover:bg-pink-700 shadow-sm transition-colors">
+          <a href="<?= url('vote') ?>" class="block w-full py-3.5 px-4 rounded-xl text-center text-white font-bold bg-pink-600 hover:bg-pink-700 shadow-sm apple-btn">
             PILIH KANDIDAT INI
           </a>
         </div>

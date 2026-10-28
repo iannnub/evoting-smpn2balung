@@ -66,7 +66,7 @@
     </div>
 
     <!-- Vote Form Container -->
-    <div id="vote-form" data-base-url="<?= rtrim(url(), '/') ?>" data-require-nisn="<?= !empty($period['require_nisn_verification']) ? '1' : '0' ?>" class="bg-white rounded-3xl p-6 sm:p-10 border border-gray-100 shadow-sm">
+    <div id="vote-form" data-base-url="<?= rtrim(url(), '/') ?>" data-require-nisn="<?= !empty($period['require_nisn_verification']) ? '1' : '0' ?>" class="liquid-glass rounded-3xl p-6 sm:p-10 border border-gray-100 shadow-sm">
       
       <!-- STEP 1: IDENTIFIKASI PEMILIH -->
       <div id="step-1" class="<?= $previewStep2 ? 'hidden' : '' ?> space-y-6">
@@ -123,7 +123,7 @@
 
         <!-- Next button -->
         <div class="pt-4 flex justify-end">
-          <button type="button" id="btn-step1-next" disabled class="px-8 py-3.5 rounded-full text-white font-bold text-sm bg-pink-600 hover:bg-pink-700 shadow-sm opacity-50 cursor-not-allowed transition-all">
+          <button type="button" id="btn-step1-next" disabled class="px-8 py-3.5 rounded-full text-white font-bold text-sm bg-pink-600 hover:bg-pink-700 shadow-sm opacity-50 cursor-not-allowed apple-btn">
             Lanjut Pilih Kandidat
           </button>
         </div>
@@ -220,10 +220,10 @@
         </div>
 
         <div class="pt-6 border-t border-gray-100 flex items-center justify-between">
-          <button type="button" id="btn-step2-back" class="px-6 py-2.5 rounded-full border border-gray-200 text-gray-600 text-sm font-semibold hover:bg-gray-50 transition-colors">
+          <button type="button" id="btn-step2-back" class="px-6 py-2.5 rounded-full border border-gray-200 text-gray-600 text-sm font-semibold hover:bg-gray-50 apple-btn">
             Kembali
           </button>
-          <button type="button" id="btn-step2-next" disabled class="px-8 py-3.5 rounded-full text-white font-bold text-sm bg-pink-600 hover:bg-pink-700 shadow-sm opacity-50 cursor-not-allowed transition-all">
+          <button type="button" id="btn-step2-next" disabled class="px-8 py-3.5 rounded-full text-white font-bold text-sm bg-pink-600 hover:bg-pink-700 shadow-sm opacity-50 cursor-not-allowed apple-btn">
             Lanjut ke Konfirmasi
           </button>
         </div>

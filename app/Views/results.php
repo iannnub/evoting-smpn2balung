@@ -50,42 +50,42 @@
 
     <!-- Stats Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-      <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-xs flex items-center gap-4">
+      <div class="liquid-glass-card p-6 rounded-3xl flex items-center gap-4">
         <div class="w-14 h-14 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center shrink-0">
           <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
         <div>
-          <span class="text-xs uppercase font-bold text-gray-400 tracking-wider">Suara Masuk</span>
+          <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Suara Masuk</span>
           <div class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-0.5" id="stat-total-voted">
             <?= format_number($stats['total_voted']) ?>
           </div>
         </div>
       </div>
 
-      <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-xs flex items-center gap-4">
+      <div class="liquid-glass-card p-6 rounded-3xl flex items-center gap-4">
         <div class="w-14 h-14 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
           <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
         </div>
         <div>
-          <span class="text-xs uppercase font-bold text-gray-400 tracking-wider">Total Siswa DPT</span>
+          <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Total Siswa DPT</span>
           <div class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-0.5" id="stat-total-students">
             <?= format_number($stats['total_students']) ?>
           </div>
         </div>
       </div>
 
-      <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-xs flex items-center gap-4">
+      <div class="liquid-glass-card p-6 rounded-3xl flex items-center gap-4">
         <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
           <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
           </svg>
         </div>
         <div>
-          <span class="text-xs uppercase font-bold text-gray-400 tracking-wider">Tingkat Partisipasi</span>
+          <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Tingkat Partisipasi</span>
           <div class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-0.5" id="stat-participation">
             <?= $stats['percentage'] ?>%
           </div>
@@ -94,7 +94,7 @@
     </div>
 
     <!-- Chart Container -->
-    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-xs mb-10">
+    <div class="liquid-glass rounded-3xl p-6 sm:p-8 border border-gray-100/80 shadow-sm mb-10">
       <h2 class="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
         <svg class="w-5 h-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
@@ -107,7 +107,7 @@
     </div>
 
     <!-- Ranking Table -->
-    <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-xs">
+    <div class="liquid-glass rounded-3xl overflow-hidden border border-gray-100/80 shadow-sm">
       <div class="p-6 border-b border-gray-100">
         <h2 class="text-lg font-bold text-gray-900">Peringkat &amp; Rekapitulasi Suara</h2>
       </div>

@@ -1,4 +1,4 @@
-<header class="bg-white/95 backdrop-blur-md border-b border-gray-100 sticky top-0 z-30 shadow-xs">
+<header class="liquid-glass border-b border-gray-100/80 sticky top-0 z-30 shadow-xs">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-18">
       
@@ -23,7 +23,7 @@
         <a href="<?= url('hasil') ?>" class="px-3.5 py-2 rounded-xl transition-all <?= current_path_is('/hasil') ? 'text-pink-600 bg-pink-50 font-bold' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50' ?>">
           Hasil Suara
         </a>
-        <a href="<?= url('vote') ?>" class="ml-2 inline-flex items-center justify-center gap-2 px-5 py-2 rounded-xl text-white font-bold text-xs sm:text-sm bg-pink-600 hover:bg-pink-700 shadow-sm transition-colors">
+        <a href="<?= url('vote') ?>" class="ml-2 inline-flex items-center justify-center gap-2 px-5 py-2 rounded-xl text-white font-bold text-xs sm:text-sm bg-pink-600 hover:bg-pink-700 shadow-sm apple-btn">
           <span>Mulai Vote</span>
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
