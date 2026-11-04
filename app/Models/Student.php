@@ -11,7 +11,17 @@ class Student extends Model
 
     public function search(string $query, int|string $periodId, int $limit = 15, bool $excludeCandidates = false): array
     {
-        $term = '%' . trim($query) . '%';
+        $raw = trim($query);
+        $clean = preg_replace('/[\s\-_]+/', '', $raw);
+
+        // Flexible class+absen pattern (e.g., '7A1', '7a01', '8B5', '9H34')
+        $normalizedCode = null;
+        if (preg_match('/^([7-9][a-zA-Z])0*([1-9][0-9]?)$/i', $clean, $m)) {
+            $normalizedCode = strtoupper($m[1]) . (int) $m[2];
+        }
+
+        $term = '%' . $raw . '%';
+        $termClean = '%' . $clean . '%';
         $excludeSql = $excludeCandidates ? "AND c.id IS NULL" : "";
 
         $sql = "
@@ -25,13 +35,38 @@ class Student extends Model
                                   AND UPPER(s.class) = UPPER(c.class) 
                                   AND s.period_id = c.period_id
             WHERE s.period_id = ?
-              AND (s.full_name LIKE ? OR s.nis LIKE ?)
+              AND (
+                s.full_name LIKE ?
+                OR s.nis LIKE ?
+                OR (? IS NOT NULL AND s.nis = ?)
+                OR s.class = ?
+              )
               {$excludeSql}
-            ORDER BY s.class ASC, s.full_name ASC
+            ORDER BY 
+              (CASE 
+                WHEN ? IS NOT NULL AND UPPER(s.nis) = UPPER(?) THEN 0
+                WHEN UPPER(s.nis) = UPPER(?) THEN 1
+                WHEN UPPER(s.nis) LIKE CONCAT(UPPER(?), '%') THEN 2
+                WHEN UPPER(s.full_name) LIKE CONCAT(UPPER(?), '%') THEN 3
+                ELSE 4 
+              END),
+              s.class ASC, s.id ASC
             LIMIT {$limit}
         ";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute([$periodId, $term, $term]);
+        $stmt->execute([
+            $periodId,
+            $term,
+            $termClean,
+            $normalizedCode,
+            $normalizedCode,
+            strtoupper($clean),
+            $normalizedCode,
+            $normalizedCode,
+            $clean,
+            $clean,
+            $raw,
+        ]);
         return $stmt->fetchAll();
     }
 

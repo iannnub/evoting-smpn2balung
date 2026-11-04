@@ -72,7 +72,7 @@
       <div id="step-1" class="<?= $previewStep2 ? 'hidden' : '' ?> space-y-6">
         <div>
           <h2 class="text-lg font-bold text-gray-900">Langkah 1: Temukan Nama Pemilih</h2>
-          <p class="text-xs sm:text-sm text-gray-500">Cukup ketik nama Anda (Siswa atau Guru). Anda tidak perlu menghafal NISN.</p>
+          <p class="text-xs sm:text-sm text-gray-500">Cukup ketik kode kelas &amp; absen Anda (contoh: <strong>7A1</strong> untuk kelas 7A absen 1) atau ketik nama Anda.</p>
         </div>
 
         <input type="hidden" id="selected-student-id" name="student_id" value="">
@@ -80,7 +80,7 @@
         <!-- Search Input -->
         <div class="relative">
           <div class="relative">
-            <input type="text" id="student-search" autocomplete="off" placeholder="Ketik nama Anda di sini (contoh: Fatir, Nabila, atau Rofik)..." class="w-full px-4 py-3.5 pl-11 rounded-2xl border-2 border-gray-200 focus:border-pink-500 focus:outline-none focus:ring-4 focus:ring-pink-100 text-sm font-medium transition-all">
+            <input type="text" id="student-search" autocomplete="off" placeholder="Ketik kode (contoh: 7A1, 7A12, 8B5) atau ketik nama Anda..." class="w-full px-4 py-3.5 pl-11 rounded-2xl border-2 border-gray-200 focus:border-pink-500 focus:outline-none focus:ring-4 focus:ring-pink-100 text-sm font-medium transition-all">
             <svg class="w-5 h-5 text-gray-400 absolute left-3.5 top-4 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>

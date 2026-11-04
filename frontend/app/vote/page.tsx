@@ -81,7 +81,7 @@ export default function VotePage() {
 
   // Handle student search query
   useEffect(() => {
-    if (searchQuery.trim().length < 3) {
+    if (searchQuery.trim().length < 2) {
       setSearchResults([]);
       setIsSearching(false);
       return;
@@ -275,7 +275,7 @@ export default function VotePage() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Ketik minimal 3 huruf nama kamu..."
+                placeholder="Ketik kode (contoh: 7A1, 7A12, 8B5) atau ketik nama Anda..."
                 className="w-full pl-12 pr-4 py-3.5 rounded-2xl border border-gray-200 focus:border-pink-500 focus:ring-4 focus:ring-pink-100 text-sm font-medium outline-none transition-all"
               />
               {isSearching && (
@@ -286,16 +286,19 @@ export default function VotePage() {
             </div>
 
             {/* Results dropdown */}
-            {searchQuery.trim().length >= 3 && (
+            {searchQuery.trim().length >= 2 && (
               <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden divide-y divide-gray-100 max-h-80 overflow-y-auto">
                 {searchResults.length === 0 && !isSearching ? (
                   <div className="p-6 text-center text-xs text-gray-500">
-                    Nama tidak ditemukan dalam DPT. Pastikan ejaan sesuai kartu pelajar.
+                    Data pemilih tidak ditemukan. Pastikan kode kelas &amp; absen (contoh: 7A1) atau ejaan nama sudah benar.
                   </div>
                 ) : (
                   searchResults.map((student) => {
                     const isCandidate = Boolean(student.is_candidate);
                     const hasVoted = Boolean(student.has_voted);
+                    const isTeacher = student.class === "GURU";
+                    const codeMatch = (student.nis || "").match(/^[0-9]+[a-zA-Z]+([0-9]+)$/);
+                    const absenNum = codeMatch ? codeMatch[1] : "";
 
                     return (
                       <div
@@ -316,7 +319,9 @@ export default function VotePage() {
                         <div>
                           <p className="font-bold text-gray-900 text-sm">{student.full_name}</p>
                           <p className="text-xs text-gray-500">
-                            Kelas {student.class} {student.nis ? `• NISN: ${student.nis}` : ""}
+                            {isTeacher
+                              ? "Dewan Guru"
+                              : `Kelas ${student.class} • Absen ${absenNum || "-"} (Kode: ${student.nis})`}
                           </p>
                         </div>
 

@@ -47,13 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedCandidate = null;
   let searchTimeout = null;
 
-  // Autocomplete student search (min 3 chars, debounce 300ms)
+  // Autocomplete student search (min 2 chars, debounce 300ms)
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       const q = e.target.value.trim();
       clearTimeout(searchTimeout);
 
-      if (q.length < 3) {
+      if (q.length < 2) {
         searchResults.classList.add('hidden');
         searchResults.innerHTML = '';
         return;
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const json = await res.json();
 
           if (!json.success || !json.data || json.data.length === 0) {
-            searchResults.innerHTML = '<div class="p-4 text-center text-gray-500 text-sm">Siswa tidak ditemukan dalam DPT. Pastikan ejaan nama atau NISN benar.</div>';
+            searchResults.innerHTML = '<div class="p-4 text-center text-gray-500 text-sm">Data pemilih tidak ditemukan. Pastikan kode kelas &amp; absen (contoh: 7A1) atau ejaan nama sudah benar.</div>';
             return;
           }
 
@@ -95,13 +95,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const isTeacher = (s.class || '').toUpperCase() === 'GURU';
             const classLabel = isTeacher ? 'Dewan Guru' : `Kelas ${escapeHtml(s.class)}`;
+            
+            // Format Absen & Code
+            const codeMatch = (s.nis || '').match(/^[0-9]+[a-zA-Z]+([0-9]+)$/);
+            const absenNum = codeMatch ? codeMatch[1] : '';
+            const studentMeta = isTeacher 
+              ? classLabel 
+              : (s.nis ? `${classLabel} • Absen ${absenNum || '-'} (Kode: ${escapeHtml(s.nis)})` : classLabel);
 
             if (isCandidate) {
               html += `
                 <div class="p-3 border-b border-gray-100 bg-amber-50/70 text-amber-900 cursor-not-allowed flex items-center justify-between">
                   <div>
                     <div class="font-medium">${escapeHtml(s.full_name)}</div>
-                    <div class="text-xs text-amber-700">${classLabel} ${s.nis ? '• NISN: ' + escapeHtml(s.nis) : ''}</div>
+                    <div class="text-xs text-amber-700">${studentMeta}</div>
                   </div>
                   <span class="text-xs font-semibold px-2.5 py-1 bg-amber-200 text-amber-900 rounded-full">Kandidat (Tidak Memilih)</span>
                 </div>
@@ -111,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="p-3 border-b border-gray-100 bg-gray-50 text-gray-400 cursor-not-allowed flex items-center justify-between">
                   <div>
                     <div class="font-medium line-through">${escapeHtml(s.full_name)}</div>
-                    <div class="text-xs text-gray-400">${classLabel} ${s.nis ? '• NISN: ' + escapeHtml(s.nis) : ''}</div>
+                    <div class="text-xs text-gray-400">${studentMeta}</div>
                   </div>
                   <span class="text-xs font-semibold px-2 py-1 bg-amber-100 text-amber-800 rounded-full">Sudah Memilih</span>
                 </div>
@@ -122,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
                      data-id="${s.id}" data-name="${escapeHtml(s.full_name)}" data-class="${escapeHtml(s.class)}" data-nis="${escapeHtml(s.nis || '')}">
                   <div>
                     <div class="font-medium text-gray-800">${escapeHtml(s.full_name)}</div>
-                    <div class="text-xs text-gray-500">${classLabel} ${s.nis ? '• NISN: ' + escapeHtml(s.nis) : ''}</div>
+                    <div class="text-xs text-gray-500">${studentMeta}</div>
                   </div>
                   <span class="text-xs font-semibold px-2.5 py-1 ${isTeacher ? 'bg-purple-100 text-purple-700' : 'bg-pink-100 text-pink-700'} rounded-full">${isTeacher ? 'Dewan Guru' : 'Pilih'}</span>
                 </div>
@@ -155,9 +162,14 @@ document.addEventListener('DOMContentLoaded', () => {
     studentIdInput.value = student.id;
 
     const isTeacher = (student.class || '').toUpperCase() === 'GURU';
+    const codeMatch = (student.nis || '').match(/^[0-9]+[a-zA-Z]+([0-9]+)$/);
+    const absenNum = codeMatch ? codeMatch[1] : '';
+
     selectedStudentName.textContent = student.full_name;
     selectedStudentClass.textContent = isTeacher ? 'Dewan Guru' : `Kelas ${student.class}`;
-    selectedStudentNis.textContent = isTeacher ? 'Kategori: Dewan Guru' : (student.nis ? `NISN: ${student.nis}` : 'NISN: -');
+    selectedStudentNis.textContent = isTeacher 
+      ? 'Kategori: Dewan Guru' 
+      : (student.nis ? `Absen ${absenNum || '-'} • Kode: ${student.nis}` : `Kelas ${student.class}`);
 
     searchInput.classList.add('hidden');
     searchResults.classList.add('hidden');

@@ -38,10 +38,10 @@ class VoteController extends Controller
     public function search(): never
     {
         $q = trim((string) ($_GET['q'] ?? ''));
-        if (mb_strlen($q) < 3) {
+        if (mb_strlen($q) < 2) {
             $this->json([
                 'success' => false,
-                'message' => 'Kata kunci pencarian minimal 3 karakter.',
+                'message' => 'Kata kunci pencarian minimal 2 karakter.',
             ], 400);
         }
 
