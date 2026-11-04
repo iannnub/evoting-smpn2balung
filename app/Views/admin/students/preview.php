@@ -51,8 +51,8 @@
         <label class="flex items-start gap-2.5 cursor-pointer">
           <input type="checkbox" name="skip_duplicate_nis" value="1" checked class="mt-0.5 w-4 h-4 rounded text-pink-600 focus:ring-pink-500">
           <div>
-            <span class="text-xs font-bold text-gray-800">Lewati baris jika NISN sudah terdaftar di periode ini</span>
-            <span class="block text-[11px] text-gray-500">Mencegah duplikasi data jika ada siswa dengan NISN sama yang telah diinput sebelumnya.</span>
+            <span class="text-xs font-bold text-gray-800">Lewati baris jika kode siswa atau nama guru sudah terdaftar di periode ini</span>
+            <span class="block text-[11px] text-gray-500">Mencegah duplikasi data jika ada siswa dengan kode/nama sama yang telah diinput sebelumnya.</span>
           </div>
         </label>
       </div>
@@ -81,7 +81,7 @@
         <thead class="bg-slate-50 border-b border-gray-100 text-gray-500 font-semibold uppercase tracking-wider text-[11px] sticky top-0 z-10 shadow-xs">
           <tr>
             <th class="py-3 px-4 w-12 text-center">No</th>
-            <th class="py-3 px-4 w-28">NISN</th>
+            <th class="py-3 px-4 w-36">Kode (Kelas+Absen)</th>
             <th class="py-3 px-4">Nama Siswa</th>
             <th class="py-3 px-4 w-24">Kelas</th>
             <th class="py-3 px-4 w-24 text-center">Status</th>

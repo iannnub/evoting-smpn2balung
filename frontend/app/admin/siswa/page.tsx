@@ -409,7 +409,7 @@ export default function AdminSiswaPage() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Cari nama siswa, nama guru, atau NISN..."
+              placeholder="Cari nama siswa, nama guru, atau kode (contoh: 7A1)..."
               className="w-full pl-10 pr-20 py-2.5 rounded-xl border border-gray-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-100 text-xs font-medium outline-none"
             />
             <button
@@ -483,7 +483,7 @@ export default function AdminSiswaPage() {
                 <th className="py-3.5 px-4">No</th>
                 <th className="py-3.5 px-4">Nama Pemilih</th>
                 <th className="py-3.5 px-4">Kategori / Kelas</th>
-                <th className="py-3.5 px-4">NISN</th>
+                <th className="py-3.5 px-4">Kode (Kelas+Absen)</th>
                 <th className="py-3.5 px-4 text-center">Status Suara</th>
               </tr>
             </thead>
@@ -654,7 +654,7 @@ export default function AdminSiswaPage() {
                     Pilih file Excel (.xlsx) data Siswa atau Guru
                   </p>
                   <p className="text-[11px] text-gray-400 mt-1">
-                    Header siswa: NO, NISN, NAMA, KELAS &bull; Header guru: NO, NAMA_GURU
+                    Header siswa: NO, KODE, NAMA, KELAS &bull; Header guru: NO, NAMA_GURU
                   </p>
 
                   <input
@@ -722,7 +722,7 @@ export default function AdminSiswaPage() {
                     className="w-4 h-4 text-pink-600 rounded-md border-gray-300 focus:ring-pink-500"
                   />
                   <label htmlFor="skip-dup" className="text-xs font-semibold text-gray-700">
-                    Lewati data jika NISN siswa atau Nama Guru sudah ada di DPT
+                    Lewati data jika kode siswa atau Nama Guru sudah ada di DPT
                   </label>
                 </div>
 

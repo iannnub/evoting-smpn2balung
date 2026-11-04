@@ -55,13 +55,14 @@
           </div>
         </label>
 
-        <label class="flex items-start gap-3 p-4 rounded-2xl bg-slate-50 border border-gray-200 cursor-pointer hover:bg-slate-100 transition-colors">
-          <input type="checkbox" name="require_nisn_verification" value="1" <?= !empty($period['require_nisn_verification']) ? 'checked' : '' ?> class="mt-0.5 w-4 h-4 rounded text-pink-600 focus:ring-pink-500">
+        <input type="hidden" name="require_nisn_verification" value="0">
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-emerald-50/60 border border-emerald-200">
+          <svg class="w-5 h-5 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
           <div>
-            <span class="block text-sm font-bold text-gray-800">Wajibkan Verifikasi 4 Digit Terakhir NISN</span>
-            <span class="block text-xs text-gray-500 mt-0.5">Pengaman ekstra: siswa harus memasukkan 4 angka terakhir NISN mereka sebelum memilih.</span>
+            <span class="block text-sm font-bold text-emerald-900">Sistem Kode Khusus Siswa (Kelas &amp; Absen)</span>
+            <span class="block text-xs text-emerald-700 mt-0.5">Siswa memilih langsung dengan kode kelas dan nomor absen (contoh: 7A1, 8B5, 9H34) tanpa perlu mengingat atau memasukkan NISN.</span>
           </div>
-        </label>
+        </div>
 
         <?php if (!$isEdit): ?>
           <label class="flex items-start gap-3 p-4 rounded-2xl bg-pink-50 border border-pink-200 cursor-pointer">

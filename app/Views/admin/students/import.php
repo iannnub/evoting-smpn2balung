@@ -23,9 +23,10 @@
         Ketentuan Kolom Spreadsheet:
       </div>
       <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
-        <li>Baris header wajib memuat kolom: <code class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 font-mono font-bold">NO</code>, <code class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 font-mono font-bold">NISN</code>, <code class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 font-mono font-bold">NAMA</code>, <code class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 font-mono font-bold">KELAS</code> (urutan kolom bebas).</li>
-        <li>Kolom <strong>KELAS</strong> mendukung format sekolah seperti <code class="px-1 py-0.5 rounded bg-slate-200 font-mono font-semibold">7 A</code> s/d <code class="px-1 py-0.5 rounded bg-slate-200 font-mono font-semibold">9 H</code> (akan otomatis dinormalisasi).</li>
-        <li>Angka <strong>NISN</strong> yang hilang angka nol di depannya otomatis dilengkapi menjadi 10 digit.</li>
+        <li>Baris header memuat kolom: <code class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 font-mono font-bold">NO</code>, <code class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 font-mono font-bold">KODE</code>, <code class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 font-mono font-bold">NAMA</code>, <code class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 font-mono font-bold">KELAS</code> (urutan kolom bebas).</li>
+        <li>Kolom <strong>KODE</strong> menggunakan kode kombinasi kelas &amp; absen (contoh: <code class="px-1 py-0.5 rounded bg-slate-200 font-mono font-semibold">7A1</code>, <code class="px-1 py-0.5 rounded bg-slate-200 font-mono font-semibold">7A12</code>, <code class="px-1 py-0.5 rounded bg-slate-200 font-mono font-semibold">8B5</code>). Jika kolom kode di Excel dikosongkan, sistem akan otomatis membuatkan kode dari <strong>Kelas + Nomor Absen</strong>.</li>
+        <li>Kolom <strong>KELAS</strong> mendukung format sekolah seperti <code class="px-1 py-0.5 rounded bg-slate-200 font-mono font-semibold">7 A</code> s/d <code class="px-1 py-0.5 rounded bg-slate-200 font-mono font-semibold">9 H</code> (otomatis dinormalisasi).</li>
+        <li>Untuk data Dewan Guru, cukup unggah file dengan kolom <code class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 font-mono font-bold">NO</code> dan <code class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 font-mono font-bold">NAMA_GURU</code>.</li>
       </ul>
 
       <div class="pt-2 flex flex-wrap items-center gap-2">

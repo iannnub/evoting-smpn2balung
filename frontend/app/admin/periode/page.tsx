@@ -334,31 +334,21 @@ export default function AdminPeriodePage() {
                   </button>
                 </div>
 
-                {/* 3. Verifikasi NISN Toggle */}
+                {/* 3. Identifikasi Siswa (Sistem Kode Kelas & Absen) */}
                 <div className="rounded-2xl bg-slate-50 border border-slate-100 p-5 flex flex-col justify-between space-y-4">
                   <div>
                     <div className="flex items-center gap-2 text-xs font-bold text-gray-700">
-                      <ShieldCheck className="w-4 h-4 text-blue-600" />
-                      <span>Verifikasi 4 Digit NISN</span>
+                      <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                      <span>Sistem Kode Khusus (Kelas+Absen)</span>
                     </div>
                     <p className="text-xs text-gray-500 mt-1">
-                      {requireNisn
-                        ? "Siswa wajib memasukkan 4 digit terakhir NISN sebelum voting."
-                        : "Siswa cukup memilih namanya pada pencarian DPT."}
+                      Siswa menggunakan kode unik kelas &amp; absen (contoh: 7A1 s.d. 9H34) tanpa menghafal NISN.
                     </p>
                   </div>
 
-                  <button
-                    onClick={() => handleToggleNisn(p)}
-                    disabled={isBusy}
-                    className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-colors min-h-[40px] ${
-                      requireNisn
-                        ? "bg-slate-200 text-slate-800 hover:bg-slate-300"
-                        : "bg-blue-600 text-white hover:bg-blue-700"
-                    }`}
-                  >
-                    {requireNisn ? "Matikan Verifikasi NISN" : "Aktifkan Verifikasi NISN"}
-                  </button>
+                  <div className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-emerald-50 text-emerald-800 border border-emerald-200">
+                    Sistem Kode Absen Aktif
+                  </div>
                 </div>
 
                 {/* 4. Reset Suara Card */}

@@ -82,7 +82,7 @@ class StudentController extends Controller
         }
 
         $fullName = clean_name((string) ($_POST['full_name'] ?? ''));
-        $nis = trim(preg_replace('/[^0-9]/', '', (string) ($_POST['nis'] ?? '')));
+        $kodeRaw = trim((string) ($_POST['kode'] ?? $_POST['nis'] ?? ''));
         $classRaw = trim((string) ($_POST['class'] ?? ''));
 
         $class = normalize_class($classRaw);
@@ -97,12 +97,22 @@ class StudentController extends Controller
             $this->back();
         }
 
+        $code = null;
+        if ($class !== 'GURU') {
+            $cleanCode = preg_replace('/[\s\-_]+/', '', $kodeRaw);
+            if (preg_match('/^([7-9][a-zA-Z])0*([1-9][0-9]?)$/i', $cleanCode, $m)) {
+                $code = strtoupper($m[1]) . (int) $m[2];
+            } elseif ($cleanCode !== '') {
+                $code = strtoupper($cleanCode);
+            }
+        }
+
         $grade = grade_from_class($class);
 
         $this->studentModel->create([
             'period_id' => $activePeriod['id'],
             'full_name' => $fullName,
-            'nis' => $nis ?: null,
+            'nis' => $code,
             'class' => $class,
             'grade' => $grade,
         ]);
@@ -224,9 +234,19 @@ class StudentController extends Controller
                 $headerIndex = $rIdx;
                 $colMap['nama'] = $namaIdx;
                 $colMap['kelas'] = $kelasIdx;
-                $colMap['nisn'] = array_search('NISN', $rowUpper);
-                if ($colMap['nisn'] === false) $colMap['nisn'] = array_search('NIS', $rowUpper);
+                
+                // Detect KODE / NISN / NIS column
+                $colMap['kode'] = array_search('KODE', $rowUpper);
+                if ($colMap['kode'] === false) $colMap['kode'] = array_search('KODE_SISWA', $rowUpper);
+                if ($colMap['kode'] === false) $colMap['kode'] = array_search('KODE SISWA', $rowUpper);
+                if ($colMap['kode'] === false) $colMap['kode'] = array_search('KODE ABSEN', $rowUpper);
+                if ($colMap['kode'] === false) $colMap['kode'] = array_search('KODE PEMILIH', $rowUpper);
+                if ($colMap['kode'] === false) $colMap['kode'] = array_search('NISN', $rowUpper);
+                if ($colMap['kode'] === false) $colMap['kode'] = array_search('NIS', $rowUpper);
+
                 $colMap['no'] = array_search('NO', $rowUpper);
+                if ($colMap['no'] === false) $colMap['no'] = array_search('NOMOR', $rowUpper);
+                if ($colMap['no'] === false) $colMap['no'] = array_search('ABSEN', $rowUpper);
                 $isTeacherImport = false;
                 break;
             }
@@ -242,7 +262,7 @@ class StudentController extends Controller
                 $headerIndex = $rIdx;
                 $colMap['nama'] = $guruIdx;
                 $colMap['kelas'] = false;
-                $colMap['nisn'] = false;
+                $colMap['kode'] = false;
                 $colMap['no'] = array_search('NO', $rowUpper);
                 $isTeacherImport = true;
                 break;
@@ -250,7 +270,7 @@ class StudentController extends Controller
         }
 
         if ($headerIndex === null) {
-            $errMsg = 'Header kolom tidak dikenali. Pastikan file siswa memuat kolom NO, NISN, NAMA, KELAS atau file guru memuat kolom NO, NAMA_GURU.';
+            $errMsg = 'Header kolom tidak dikenali. Pastikan file siswa memuat kolom NO, KODE (opsional), NAMA, KELAS atau file guru memuat kolom NO, NAMA_GURU.';
             if (is_api_request()) {
                 $this->json(['success' => false, 'message' => $errMsg], 400);
             }
@@ -259,7 +279,8 @@ class StudentController extends Controller
         }
 
         $parsedRows = [];
-        $nisnCounts = [];
+        $codeCounts = [];
+        $classCounters = [];
         $lastClass = null;
         $maxLimit = (int) config('app.import_max_rows', 1000);
         $warningsCount = 0;
@@ -269,10 +290,11 @@ class StudentController extends Controller
 
             $namaRaw = trim((string) ($row[$colMap['nama']] ?? ''));
             $kelasRaw = $colMap['kelas'] !== false ? trim((string) ($row[$colMap['kelas']] ?? '')) : '';
-            $nisnRaw = $colMap['nisn'] !== false ? trim((string) ($row[$colMap['nisn']] ?? '')) : '';
+            $kodeRaw = $colMap['kode'] !== false ? trim((string) ($row[$colMap['kode']] ?? '')) : '';
+            $noRaw = $colMap['no'] !== false ? trim((string) ($row[$colMap['no']] ?? '')) : '';
 
             // Skip entirely empty row
-            if ($namaRaw === '' && $kelasRaw === '' && $nisnRaw === '') {
+            if ($namaRaw === '' && $kelasRaw === '' && $kodeRaw === '') {
                 continue;
             }
 
@@ -282,6 +304,7 @@ class StudentController extends Controller
             if ($isTeacherImport) {
                 $class = 'GURU';
                 $grade = 4;
+                $cleanCode = null;
             } else {
                 $class = normalize_class($kelasRaw);
 
@@ -298,13 +321,26 @@ class StudentController extends Controller
                 }
 
                 $grade = $class ? grade_from_class($class) : 0;
-            }
 
-            // Clean NISN: remove noise like ';'
-            $cleanNis = preg_replace('/[^0-9]/', '', $nisnRaw);
-            // Left pad if numeric 8 or 9 digits
-            if ($cleanNis !== '' && strlen($cleanNis) < 10) {
-                $cleanNis = str_pad($cleanNis, 10, '0', STR_PAD_LEFT);
+                // Process code: either provided or auto-generated from Class + Absen
+                $cleanCode = '';
+                if ($kodeRaw !== '') {
+                    $clean = preg_replace('/[\s\-_]+/', '', $kodeRaw);
+                    if (preg_match('/^([7-9][a-zA-Z])0*([1-9][0-9]?)$/i', $clean, $m)) {
+                        $cleanCode = strtoupper($m[1]) . (int) $m[2];
+                    } else {
+                        $cleanCode = strtoupper($clean);
+                    }
+                } elseif ($class) {
+                    if ($noRaw !== '' && is_numeric($noRaw) && (int) $noRaw > 0) {
+                        $num = (int) $noRaw;
+                        $classCounters[$class] = max($classCounters[$class] ?? 0, $num);
+                        $cleanCode = strtoupper($class) . $num;
+                    } else {
+                        $classCounters[$class] = ($classCounters[$class] ?? 0) + 1;
+                        $cleanCode = strtoupper($class) . $classCounters[$class];
+                    }
+                }
             }
 
             if (empty($fullName)) {
@@ -312,10 +348,10 @@ class StudentController extends Controller
             }
 
             if (!$isTeacherImport) {
-                if ($cleanNis === '') {
-                    $warnings[] = 'NISN kosong';
+                if ($cleanCode === '') {
+                    $warnings[] = 'Kode pemilih kosong dan tidak dapat dibentuk';
                 } else {
-                    $nisnCounts[$cleanNis] = ($nisnCounts[$cleanNis] ?? 0) + 1;
+                    $codeCounts[$cleanCode] = ($codeCounts[$cleanCode] ?? 0) + 1;
                 }
             }
 
@@ -326,7 +362,7 @@ class StudentController extends Controller
             $parsedRows[] = [
                 'row_num' => count($parsedRows) + 1,
                 'original_row' => $rIdx,
-                'nis' => $cleanNis,
+                'nis' => $cleanCode,
                 'full_name' => $fullName,
                 'class' => $class ?: $kelasRaw,
                 'grade' => $grade,
@@ -341,8 +377,8 @@ class StudentController extends Controller
 
         // Mark duplicates in warning list
         foreach ($parsedRows as &$p) {
-            if ($p['nis'] !== '' && ($nisnCounts[$p['nis']] ?? 0) > 1) {
-                $p['warnings'][] = "NISN {$p['nis']} terulang " . $nisnCounts[$p['nis']] . "x";
+            if ($p['nis'] !== '' && ($codeCounts[$p['nis']] ?? 0) > 1) {
+                $p['warnings'][] = "Kode {$p['nis']} terulang " . $codeCounts[$p['nis']] . "x";
             }
         }
         unset($p);
@@ -448,7 +484,7 @@ class StudentController extends Controller
 
             $msg = "Import berhasil: {$result['inserted']} siswa berhasil dimasukkan ke DPT.";
             if ($result['skipped'] > 0) {
-                $msg .= " ({$result['skipped']} siswa dilewati karena NISN ganda).";
+                $msg .= " ({$result['skipped']} siswa dilewati karena kode/data sudah terdaftar di DPT).";
             }
 
             if (is_api_request()) {
@@ -472,12 +508,12 @@ class StudentController extends Controller
 
     public function template(): never
     {
-        $headers = ['NO', 'NISN', 'NAMA', 'KELAS'];
+        $headers = ['NO', 'KODE', 'NAMA', 'KELAS'];
         $samples = [
-            [1, '0133085278', 'ACH. FATIR ARDIANSYAH', '7A'],
-            [2, '0138202388', 'ANANDA SEPTIAN', '7A'],
-            [3, '0134176889', 'BAYU DIGJAYA SAPUTRA', '8G'],
-            [4, '0118591342', 'HILDA ELFIRA DWI SEPTIANI', '9H'],
+            [1, '7A1', 'ACH. FATIR ARDIANSYAH', '7A'],
+            [2, '7A2', 'ANANDA SEPTIAN', '7A'],
+            [3, '8G1', 'BAYU DIGJAYA SAPUTRA', '8G'],
+            [4, '9H1', 'HILDA ELFIRA DWI SEPTIANI', '9H'],
         ];
 
         $format = strtolower((string) ($_GET['format'] ?? 'xlsx'));
@@ -536,7 +572,7 @@ class StudentController extends Controller
 
         // Prepare Sheet 1: Semua DPT
         $sheetSemua = [
-            ['NO', 'NISN', 'NAMA LENGKAP', 'KELAS / ROMBEL', 'TINGKAT', 'KATEGORI', 'STATUS HAK SUARA', 'WAKTU MEMILIH']
+            ['NO', 'KODE / NO. ABSEN', 'NAMA LENGKAP', 'KELAS / ROMBEL', 'TINGKAT', 'KATEGORI', 'STATUS HAK SUARA', 'WAKTU MEMILIH']
         ];
         foreach ($allRecords as $i => $r) {
             $sheetSemua[] = [
@@ -553,7 +589,7 @@ class StudentController extends Controller
 
         // Prepare Sheet 2: Khusus Siswa
         $sheetSiswa = [
-            ['NO', 'NISN', 'NAMA SISWA', 'KELAS', 'TINGKAT', 'STATUS HAK SUARA']
+            ['NO', 'KODE (KELAS+ABSEN)', 'NAMA SISWA', 'KELAS', 'TINGKAT', 'STATUS HAK SUARA']
         ];
         foreach ($allSiswa as $i => $s) {
             $sheetSiswa[] = [
@@ -581,7 +617,7 @@ class StudentController extends Controller
 
         // Prepare Sheet 4: Format Siap Impor (Untuk kemudahan edit lulusan / pensiunan / guru baru)
         $sheetFormatImpor = [
-            ['NISN', 'NAMA_LENGKAP', 'KELAS']
+            ['KODE', 'NAMA_LENGKAP', 'KELAS']
         ];
         foreach ($allRecords as $r) {
             $sheetFormatImpor[] = [

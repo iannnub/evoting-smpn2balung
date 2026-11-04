@@ -91,9 +91,9 @@
       <?php endif; ?>
 
       <div class="md:col-span-2">
-        <label for="search" class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Cari Nama / NISN</label>
+        <label for="search" class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Cari Nama / Kode</label>
         <div class="relative">
-          <input type="text" id="search" name="search" value="<?= e($filters['search']) ?>" placeholder="Ketik nama siswa, guru, atau NISN..." class="w-full pl-9 pr-4 py-2 rounded-xl border border-gray-200 text-xs focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-100">
+          <input type="text" id="search" name="search" value="<?= e($filters['search']) ?>" placeholder="Ketik nama siswa, guru, atau kode (contoh: 7A1)..." class="w-full pl-9 pr-4 py-2 rounded-xl border border-gray-200 text-xs focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-100">
           <svg class="w-4 h-4 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
         </div>
       </div>
@@ -151,7 +151,7 @@
                 <input type="checkbox" id="select-all" class="rounded text-pink-600 focus:ring-pink-500">
               </th>
               <th class="py-3.5 px-4 w-16 text-center">No</th>
-              <th class="py-3.5 px-4">NISN</th>
+              <th class="py-3.5 px-4">Kode (Kelas+Absen)</th>
               <th class="py-3.5 px-4">Nama Siswa</th>
               <th class="py-3.5 px-4">Kelas</th>
               <th class="py-3.5 px-4">Status Voting</th>
@@ -295,9 +295,9 @@
       <?= csrf_field() ?>
 
       <div>
-        <label for="nis" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">NISN (10 Digit)</label>
-        <input type="text" id="nis" name="nis" maxlength="10" placeholder="Contoh: 0133085278" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-100">
-        <span class="text-[11px] text-gray-400 mt-1 block">Boleh dikosongkan jika siswa belum memiliki NISN</span>
+        <label for="nis" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Kode Pemilih (Kelas &amp; Absen)</label>
+        <input type="text" id="nis" name="nis" maxlength="15" placeholder="Contoh: 7A1, 7A12, 8B5 (opsional)" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-100 uppercase">
+        <span class="text-[11px] text-gray-400 mt-1 block">Boleh dikosongkan jika ingin dibuatkan otomatis dari kelas</span>
       </div>
 
       <div>
