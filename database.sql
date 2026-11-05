@@ -1,11 +1,17 @@
 -- E-Voting OSIS SMP Negeri 2 Balung
 -- Database Export with Special Class+Absen Codes (7A1, 7A2, ...)
--- Generated at 2026-11-05 04:49:46
+-- Generated at 2026-11-05 04:57:38
 
 SET FOREIGN_KEY_CHECKS = 0;
 
--- Table structure for `periods`
+-- Drop existing tables in reverse dependency order
+DROP TABLE IF EXISTS `votes`;
+DROP TABLE IF EXISTS `candidates`;
+DROP TABLE IF EXISTS `students`;
 DROP TABLE IF EXISTS `periods`;
+DROP TABLE IF EXISTS `admins`;
+
+-- Table structure for `periods`
 CREATE TABLE `periods` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL COMMENT 'Nama periode, misal Pemilihan OSIS 2026/2027',
@@ -22,7 +28,6 @@ CREATE TABLE `periods` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Table structure for `candidates`
-DROP TABLE IF EXISTS `candidates`;
 CREATE TABLE `candidates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `period_id` int(11) NOT NULL,
@@ -41,7 +46,6 @@ CREATE TABLE `candidates` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Table structure for `students`
-DROP TABLE IF EXISTS `students`;
 CREATE TABLE `students` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `period_id` int(11) NOT NULL,
@@ -60,7 +64,6 @@ CREATE TABLE `students` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5875 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Table structure for `votes`
-DROP TABLE IF EXISTS `votes`;
 CREATE TABLE `votes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `student_id` int(11) NOT NULL,
@@ -78,7 +81,6 @@ CREATE TABLE `votes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Table structure for `admins`
-DROP TABLE IF EXISTS `admins`;
 CREATE TABLE `admins` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
