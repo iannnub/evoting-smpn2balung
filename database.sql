@@ -1,6 +1,6 @@
 -- E-Voting OSIS SMP Negeri 2 Balung
 -- Database Export with Special Class+Absen Codes (7A1, 7A2, ...)
--- Generated at 2026-11-04 17:54:12
+-- Generated at 2026-11-05 04:49:46
 
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -38,7 +38,7 @@ CREATE TABLE `candidates` (
   KEY `idx_period` (`period_id`),
   KEY `idx_order` (`order_number`),
   CONSTRAINT `candidates_ibfk_1` FOREIGN KEY (`period_id`) REFERENCES `periods` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Table structure for `students`
 DROP TABLE IF EXISTS `students`;
@@ -95,8 +95,10 @@ CREATE TABLE `admins` (
 INSERT INTO `periods` (`id`, `name`, `start_date`, `end_date`, `is_active`, `is_results_visible`, `is_voting_open`, `require_nisn_verification`) VALUES (1, 'Pemilihan Ketua OSIS 2026/2027', '2026-10-14', '2026-10-28', 1, 1, 1, 0);
 
 -- Dumping data for `candidates`
-INSERT INTO `candidates` (`id`, `period_id`, `order_number`, `full_name`, `class`, `vision`, `mission`, `photo_filename`) VALUES (1, 1, 1, 'ADITYA PRATAMA', '8A', 'Mewujudkan OSIS SMPN 2 Balung yang religius, kreatif, mandiri, dan berprestasi.', '1. Menumbuhkan ketaqwaan kepada Tuhan YME\n2. Mengembangkan bakat minat seni dan olahraga\n3. Mewujudkan budaya literasi dan disiplin sekolah', 'kandidat-1.svg');
-INSERT INTO `candidates` (`id`, `period_id`, `order_number`, `full_name`, `class`, `vision`, `mission`, `photo_filename`) VALUES (2, 1, 2, 'NUR INDAH SARI', '8C', 'Menjadikan OSIS wadah aspirasi siswa yang inklusif, kolaboratif, dan berwawasan lingkungan.', '1. Membangun ruang aspirasi terbuka untuk seluruh siswa\n2. Mengadakan program kepedulian lingkungan sekolah sehat\n3. Mempererat silaturahmi antar kelas dan ekstrakurikuler', 'kandidat-2.svg');
+INSERT INTO `candidates` (`id`, `period_id`, `order_number`, `full_name`, `class`, `vision`, `mission`, `photo_filename`) VALUES (1, 1, 1, 'RAFFI - VANECHA', '8G', 'Mewujudkan lingkungan sekolah yang nyaman, aktif, dan harmonis. Dimana para siswa dapat mengembangkan bakat serta menjunjung tinggi kedisiplinan, gotong royong dan peduli terhadap kebersihan sekolah.', 'Mendorong siswa lebih peduli terhadap kebersihan, keamanan, dan kerukunan di sekolah, serta membantu mensukseskan program-program di sekolah.', '20261105_040604_faa2d7f9ca0f.jpg');
+INSERT INTO `candidates` (`id`, `period_id`, `order_number`, `full_name`, `class`, `vision`, `mission`, `photo_filename`) VALUES (2, 1, 2, 'KAVINDRA - GIO', '8A', 'Mewujudkan lingkungan sekolah BERCAHAYA (Beriman dan Bertaqwa, Cerdas dan Berakhlak Mulia) serta memangun OSIS sebagai wadah kolaborasi yang aktif, kreatif, berkarakter dan berpegang teguh pada nilai kejujuran dan kesopanan.', '1. Meningkatkan kedisiplinan dan karakter\r\n2. Menegakkan peraturan dan ajakan tentang menaati tata tertib sekolah\r\n3. Meningkatkan bakat, minat, dan kreativitas siswa melalui kegiatan positif\r\n4. Membangun komunikasi dan aspirasi \r\n5. Serta meningkatkan keimanan dan ketaqwaan kepada Tuhan Yang Maha Esa', '20261105_041321_a97a85dd2504.jpg');
+INSERT INTO `candidates` (`id`, `period_id`, `order_number`, `full_name`, `class`, `vision`, `mission`, `photo_filename`) VALUES (3, 1, 3, 'FAHM ARA - SALSA', '8B', 'Mewujudkan lingkungan sekolah yang harmonis, berprestasi, beriman, betaqwa, bersih, nyaman, dan penuh kebersamaan.', '1. Meningkatkan keimanan dan ketaqwaan kepada Tuhan Yang Maha Esa\r\n2. Membangun komunikasi dan kerja sama yang baik antara siswa, OSIS, dan sekolah \r\n3. Mengembangkan prestasi akademik dan nonakademik', '20261105_041740_ae6ee829c7fa.jpg');
+INSERT INTO `candidates` (`id`, `period_id`, `order_number`, `full_name`, `class`, `vision`, `mission`, `photo_filename`) VALUES (4, 1, 4, 'YAFFI - INO', '8A', 'Mewujudkan OSIS yang berintegritas, progresif, dan inspiratif sebagai penggerak perubahan positifserta wadah aspirasi siswa untuk meraih prestasi.', '1. Menanamkan kedisiplinan, tanggung jawab, dan jiwa kepemimpinan\r\n2. Menembangkan kreativitas dan potensi siswa melalui kegiatan inovatif\r\n3. Menampung dan merealisasikan aspirasi siswa secara bijaksana\r\n4. Membangu OSIS yang solid, aktif, dan menjadi teladan', '20261105_042129_d24756c38f10.jpg');
 
 -- Dumping data for `admins`
 INSERT INTO `admins` (`id`, `email`, `password_hash`, `full_name`, `created_at`) VALUES (1, 'admin@smpn2balung.sch.id', '$2y$10$VRVBU.3th.j3PQuxPgXgXuuJgjabtLnmW8c7hBWVvStZPHkX8d4Za', 'Administrator SMPN 2 BALUNG', '2026-10-14 10:08:45');
